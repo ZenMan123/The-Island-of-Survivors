@@ -54,14 +54,14 @@ unset(_cmake_expected_targets)
 add_library(sfml-system SHARED IMPORTED)
 
 set_target_properties(sfml-system PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}}/../include"
 )
 
 # Create imported target sfml-window
 add_library(sfml-window SHARED IMPORTED)
 
 set_target_properties(sfml-window PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}}/../include"
   INTERFACE_LINK_LIBRARIES "sfml-system"
 )
 
@@ -76,7 +76,7 @@ set_target_properties(OpenGL PROPERTIES
 add_library(sfml-network SHARED IMPORTED)
 
 set_target_properties(sfml-network PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}}/../include"
   INTERFACE_LINK_LIBRARIES "sfml-system"
 )
 
@@ -84,7 +84,7 @@ set_target_properties(sfml-network PROPERTIES
 add_library(sfml-graphics SHARED IMPORTED)
 
 set_target_properties(sfml-graphics PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/../include"
   INTERFACE_LINK_LIBRARIES "sfml-window"
 )
 
@@ -92,7 +92,7 @@ set_target_properties(sfml-graphics PROPERTIES
 add_library(sfml-audio SHARED IMPORTED)
 
 set_target_properties(sfml-audio PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}}/../include"
   INTERFACE_LINK_LIBRARIES "sfml-system"
 )
 

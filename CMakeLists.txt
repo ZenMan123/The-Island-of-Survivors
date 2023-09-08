@@ -6,7 +6,15 @@ project(The-Island-of-Survivors)
 set(CMAKE_CXX_STANDARD 20)
 
 # Setup SFML
-set(SFML_DIR "libraries/SFML")
+if (WIN32)
+    set(SFML_DIR "libraries/SFML/windows")
+elseif (UNIX)
+    set(SFML_DIR "libraries/SFML/unix")
+else()
+    message(FATAL_ERROR "Unexpected operating system")
+endif()
+
+message("Dir: " ${SFML_DIR})
 find_package(SFML 2.6.0 COMPONENTS system window graphics network audio REQUIRED)
 
 # Add all source files
