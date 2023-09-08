@@ -7,8 +7,6 @@ set(CMAKE_CXX_STANDARD 20)
 
 # Setup SFML
 set(SFML_DIR "libraries/SFML")
-set(SFML_DLL_PACKAGES_PATH "${PROJECT_SOURCE_DIR}/libraries/SFML/dll")
-set(SFML_DLL_PACKAGES sfml-system-d-2.dll sfml-window-d-2.dll sfml-graphics-d-2.dll)
 find_package(SFML 2.6.0 COMPONENTS system window graphics network audio REQUIRED)
 
 # Add all source files
