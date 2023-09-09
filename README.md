@@ -20,6 +20,8 @@
         CMake suite maintained and supported by Kitware (kitware.com/cmake).
         ```
 
+### Windows
+
 * Установите утилиту `Ninja` и добавьте её в `PATH`
 
     + Проверьте что `Ninja` работает запустив в консоли команду:
@@ -33,8 +35,6 @@
         ```plain-text
         1.0.0
         ```
-
-### Windows
 
 * Запустите файл `windows_collector.bat` из корневой папки `The-Island-of-Survivors`
 
