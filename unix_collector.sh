@@ -1,4 +1,4 @@
-cmake CMakeLists.txt -G make -B build
+cmake CMakeLists.txt -G Ninja -B build
 cd ./build
-make
+ninja
 ./main
