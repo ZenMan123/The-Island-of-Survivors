@@ -54,4 +54,4 @@
         // TODO
         ```
 
-* Запустите файл `unix_collector.bat` из корневой папки `The-Island-of-Survivors`
+* Запустите файл `unix_collector.sh` из корневой папки `The-Island-of-Survivors`
