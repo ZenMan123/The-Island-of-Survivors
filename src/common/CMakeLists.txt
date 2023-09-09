@@ -2,5 +2,5 @@
 set(TARGET_NAME common)
 
 add_library(${TARGET_NAME}
-    lib.cpp
+    functions.cpp
 )
