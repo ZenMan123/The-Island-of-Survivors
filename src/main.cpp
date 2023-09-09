@@ -1,8 +1,10 @@
+#include "common/lib.hpp"
+
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-
 int main() {
+    std::cout << sum(1, 2) << "\n";
     std::cout << "Hello world!\n";
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Hello world window");
