@@ -1,5 +1,5 @@
 # Setup cmake settings
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.5)
 
 # Setup project settings
 set(PROJECT_NAME The-Island-of-Survivors)
