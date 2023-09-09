@@ -8,6 +8,6 @@ if %errorlevel% == 0 (
 )
 
 if %errorlevel% == 0 (
-    main.exe
+    The-Island-of-Survivors.exe
     exit
 )
