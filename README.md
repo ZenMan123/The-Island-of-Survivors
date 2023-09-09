@@ -51,7 +51,7 @@
     + Ожидаемый вывод и минимальная версия:
 
         ```plain-text
-        // TODO
+        Homebrew 4.1.0
         ```
 
 * Запустите файл `unix_collector.sh` из корневой папки `The-Island-of-Survivors`
