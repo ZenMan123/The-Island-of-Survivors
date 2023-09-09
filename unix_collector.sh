@@ -1,4 +1,4 @@
-cmake CMakeLists.txt -G Ninja -B build
+cmake CMakeLists.txt -B build
 cd ./build
-ninja
+make
 ./The-Island-of-Survivors
