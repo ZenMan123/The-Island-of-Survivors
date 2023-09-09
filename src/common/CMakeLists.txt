@@ -1,6 +1,3 @@
-# Marge all cpp files in library
-set(TARGET_NAME common)
-
-add_library(${TARGET_NAME}
-    functions.cpp
-)
+# Add source directories
+add_subdirectory(math)
+add_subdirectory(utils)
