@@ -7,8 +7,8 @@ add_executable(${PROJECT_NAME} main.cpp)
 
 # Add link libraries
 target_link_libraries(${PROJECT_NAME}
-    common
     sfml-graphics
+    utils
 )
 
 # Add dynamic SFML lilbraries

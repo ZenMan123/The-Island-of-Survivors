@@ -9,6 +9,7 @@ project(${PROJECT_NAME})
 
 # Setup directories and wariables
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/build)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/src)
 
 # Setup SFML
 if (WIN32)
