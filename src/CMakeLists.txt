@@ -1,5 +1,6 @@
 # Add source directories
 add_subdirectory(common)
+add_subdirectory(game_logic)
 add_subdirectory(graphics)
 
 # Create exeutable target
