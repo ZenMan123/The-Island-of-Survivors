@@ -1,0 +1,137 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "src/graphics/drawable/libdrawable.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"src/graphics/drawable/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 4,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 10,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 12,
+				"parent" : 3
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics"
+				},
+				{
+					"fragment" : "-std=gnu++20"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "/Users/artemsafin/CLionProjects/The-Island-of-Survivors/src"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/opt/homebrew/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "math::@d8e967a37f566b4d62fb"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "utils::@a221d0b7bd80d101791c"
+		}
+	],
+	"id" : "drawable::@f4104f61a75b6d024aca",
+	"name" : "drawable",
+	"nameOnDisk" : "libdrawable.a",
+	"paths" : 
+	{
+		"build" : "src/graphics/drawable",
+		"source" : "src/graphics/drawable"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/graphics/drawable/drawable_object.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/graphics/drawable/resource.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

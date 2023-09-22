@@ -1,0 +1,224 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						2,
+						5,
+						6,
+						8
+					],
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "src/common",
+					"childIndexes" : 
+					[
+						3,
+						4
+					],
+					"jsonFile" : "directory-src.common-Debug-26ca1aee19599f655637.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/common"
+				},
+				{
+					"build" : "src/common/math",
+					"jsonFile" : "directory-src.common.math-Debug-ab3d6476680404d3d900.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 0,
+					"source" : "src/common/math",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "src/common/utils",
+					"jsonFile" : "directory-src.common.utils-Debug-8e7c33a969d6f638d023.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 0,
+					"source" : "src/common/utils",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "src/game_logic",
+					"jsonFile" : "directory-src.game_logic-Debug-7a7f8cb8ba727157c069.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/game_logic"
+				},
+				{
+					"build" : "src/graphics",
+					"childIndexes" : 
+					[
+						7
+					],
+					"jsonFile" : "directory-src.graphics-Debug-b504ff7107bad588abeb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/graphics",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "src/graphics/drawable",
+					"jsonFile" : "directory-src.graphics.drawable-Debug-57eb689112a577c24cea.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 0,
+					"source" : "src/graphics/drawable",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "src/physics",
+					"jsonFile" : "directory-src.physics-Debug-ad708c4bf196a9e3f887.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/physics"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					],
+					"name" : "The-Island-of-Survivors",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "The-Island-of-Survivors::@145eef247bfb46b6828c",
+					"jsonFile" : "target-The-Island-of-Survivors-Debug-9ebd5880b803213821ee.json",
+					"name" : "The-Island-of-Survivors",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "drawable::@f4104f61a75b6d024aca",
+					"jsonFile" : "target-drawable-Debug-a46a31639ee549b2791f.json",
+					"name" : "drawable",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "graphics::@51dde881cca20334ba54",
+					"jsonFile" : "target-graphics-Debug-e19ce10bafb3f8a9fa69.json",
+					"name" : "graphics",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "math::@d8e967a37f566b4d62fb",
+					"jsonFile" : "target-math-Debug-2fa1115b436150bca4ee.json",
+					"name" : "math",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "utils::@a221d0b7bd80d101791c",
+					"jsonFile" : "target-utils-Debug-54d8774a4a5aa441d28f.json",
+					"name" : "utils",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/artemsafin/CLionProjects/The-Island-of-Survivors/cmake-build-debug",
+		"source" : "/Users/artemsafin/CLionProjects/The-Island-of-Survivors"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

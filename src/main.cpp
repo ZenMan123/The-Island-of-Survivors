@@ -1,5 +1,3 @@
-#include <SFML/Window/WindowStyle.hpp>
-#include <algorithm>
 #include <graphics/graphics_engine.hpp>
 
 

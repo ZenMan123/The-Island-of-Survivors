@@ -1,0 +1,14 @@
+# ninja log v5
+0	689	1695419252754848873	src/common/utils/CMakeFiles/utils.dir/functions.cpp.o	d6db564d3b4f7cd9
+1	738	1695419252805858761	src/graphics/drawable/CMakeFiles/drawable.dir/resource.cpp.o	affaa3010c7cbbcb
+1	742	1695419252810143964	src/graphics/drawable/CMakeFiles/drawable.dir/drawable_object.cpp.o	39754273c022ac4b
+0	749	1695419252817837779	src/common/math/CMakeFiles/math.dir/vec2.cpp.o	2434490f9b54f9b1
+2	456	1695419347137342580	src/common/utils/CMakeFiles/utils.dir/associative_storage.cpp.o	221f1e24c4b8e8cc
+457	477	1695419347161413000	src/common/utils/libutils.a	81e7a1ed4889b371
+477	496	1695419347180214000	src/common/math/libmath.a	1c8282328170e3f1
+2	508	1695419347189450811	src/graphics/CMakeFiles/graphics.dir/graphics_context.cpp.o	1edc5c7c14548ed1
+496	518	1695419347202125000	src/graphics/drawable/libdrawable.a	fb86c8781e538bbc
+3	532	1695419347213168719	src/graphics/CMakeFiles/graphics.dir/graphics_engine.cpp.o	252311e6b86bd7d6
+532	550	1695419347234239000	src/graphics/libgraphics.a	24fd25b1c56a047a
+2	574	1695419347255129323	src/CMakeFiles/The-Island-of-Survivors.dir/main.cpp.o	5d20855aa76afc1f
+574	610	1695419347293138685	/Users/artemsafin/CLionProjects/The-Island-of-Survivors/build/The-Island-of-Survivors	86192934b9c92a7d

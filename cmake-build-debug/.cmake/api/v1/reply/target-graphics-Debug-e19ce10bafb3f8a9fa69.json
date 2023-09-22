@@ -1,0 +1,141 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "src/graphics/libgraphics.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"src/graphics/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 12,
+				"parent" : 3
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics"
+				},
+				{
+					"fragment" : "-std=gnu++20"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "/Users/artemsafin/CLionProjects/The-Island-of-Survivors/src"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/opt/homebrew/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "math::@d8e967a37f566b4d62fb"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "utils::@a221d0b7bd80d101791c"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "drawable::@f4104f61a75b6d024aca"
+		}
+	],
+	"id" : "graphics::@51dde881cca20334ba54",
+	"name" : "graphics",
+	"nameOnDisk" : "libgraphics.a",
+	"paths" : 
+	{
+		"build" : "src/graphics",
+		"source" : "src/graphics"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/graphics/graphics_context.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/graphics/graphics_engine.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
