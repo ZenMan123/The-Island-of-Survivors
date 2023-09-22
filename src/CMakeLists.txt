@@ -3,6 +3,7 @@ add_subdirectory(common)
 add_subdirectory(game_logic)
 add_subdirectory(graphics)
 add_subdirectory(physics)
+add_subdirectory(runtime)
 
 # Create exeutable target
 add_executable(${PROJECT_NAME} main.cpp)
