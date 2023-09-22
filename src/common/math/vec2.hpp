@@ -1,4 +1,3 @@
-#include <SFML/Graphics/Rect.hpp>
 #include <common/utils/functions.hpp>
 
 #include <SFML/Graphics.hpp>

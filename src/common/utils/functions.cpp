@@ -20,9 +20,12 @@ RuntimeError::RuntimeError(const char* filename, const char* function, uint32_t 
 
 
 // MainLog
+
+// Constructors
 LogManager::LogManager() {
 }
 
+// Singleton
 LogManager* LogManager::GetInstance() {
     if (log_manager_ == nullptr) {
         log_manager_ = new LogManager();
@@ -30,6 +33,7 @@ LogManager* LogManager::GetInstance() {
     return log_manager_;
 }
 
+// Common functions
 std::ofstream& LogManager::log_stream() noexcept {
     log_out_.open("game_log.txt");
     return log_out_;

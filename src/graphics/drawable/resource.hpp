@@ -1,9 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics/Rect.hpp>
-#include <memory>
-
-#include <SFML/Graphics.hpp>
+#include <common/math/vec2.hpp>
 
 
 using RenderWindowPtr = std::shared_ptr<sf::RenderWindow>;
@@ -15,7 +12,7 @@ public:
     using Ptr = std::unique_ptr<Resource>;
 
     // Common functions
-    virtual void draw(RenderWindowPtr target, const sf::FloatRect& location) = 0;
+    virtual void draw(RenderWindowPtr target, const Vec2& position, const Vec2& size) = 0;
 };
 
 
@@ -30,5 +27,5 @@ public:
     ColorResource(const sf::Color& color);
 
     // Common functions
-    void draw(RenderWindowPtr target, const sf::FloatRect& location) override final;
+    void draw(RenderWindowPtr target, const Vec2& position, const Vec2& size) override final;
 };

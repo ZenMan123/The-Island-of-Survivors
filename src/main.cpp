@@ -1,13 +1,16 @@
-#include <graphics/drawable/resource.hpp>
+#include <graphics/graphics_context.hpp>
 
 #include <iostream>
-#include <SFML/Graphics.hpp>
 
 
 int main() {
     std::cout << "Hello world!\n";
 
-    ColorResource resource(sf::Color(255, 0, 0));
+    Resource::Ptr resource = std::make_unique<ColorResource>(sf::Color(255, 0, 0));
+
+    Vec2 position(0.0);
+    Vec2 size(100.0);
+    DrawableObject object(position, size, std::move(resource));
 
     RenderWindowPtr window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "Hello world window");
     while (window->isOpen()) {
@@ -19,11 +22,7 @@ int main() {
 
         window->clear(sf::Color::Black);
 
-        sf::FloatRect position(
-            0.0, 0.0, 100.0, 100.0
-        );
-
-        resource.draw(window, position);
+        object.draw(window);
 
         window->display();
     }

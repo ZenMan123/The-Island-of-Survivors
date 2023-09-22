@@ -42,20 +42,24 @@ public:
 
 // Main log manager
 class LogManager {
-private:
     inline static LogManager* log_manager_ = nullptr;
 
     std::ofstream log_out_;
 
+    // Constructors
     LogManager();
 
 public:
+    // Singleton
     LogManager(const LogManager& other) = delete;
+    LogManager(LogManager&& other) = delete;
 
     void operator=(const LogManager&) = delete;
+    void operator=(LogManager&&) = delete;
 
     static LogManager* GetInstance();
 
+    // Common functions
     std::ofstream& log_stream() noexcept;
 };
 
