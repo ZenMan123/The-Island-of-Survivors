@@ -4,6 +4,8 @@
 
 
 int main() {
+    sf::VideoMode::getDesktopMode();
+
     Resource::Ptr resource = std::make_unique<ColorResource>(sf::Color(255, 0, 0));
 
     Vec2 position(0.0);

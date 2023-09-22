@@ -16,7 +16,10 @@ void GraphicsEngine::draw() const {
 // Static functions
 RenderWindowPtr GraphicsEngine::create_window(const std::string& title, uint32_t style) {
     const auto& fullscreen_modes = sf::VideoMode::getFullscreenModes();
-    ENSURE(!fullscreen_modes.empty(), RuntimeError, "fullscreen wideo modes are not found");
 
-    return std::make_shared<sf::RenderWindow>(fullscreen_modes[0], title, style);
+    if (!fullscreen_modes.empty()) {
+        return std::make_shared<sf::RenderWindow>(fullscreen_modes[0], title, style);
+    }
+
+    return std::make_shared<sf::RenderWindow>(sf::VideoMode::getDesktopMode(), title, style);
 }
