@@ -1,3 +1,5 @@
+#pragma once
+
 #include "drawable/drawable_object.hpp"
 
 #include <common/utils/associative_storage.hpp>

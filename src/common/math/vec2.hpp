@@ -1,3 +1,5 @@
+#pragma once
+
 #include <common/utils/functions.hpp>
 
 #include <SFML/Graphics.hpp>

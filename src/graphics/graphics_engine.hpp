@@ -1,3 +1,5 @@
+#pragma once
+
 #include "graphics_context.hpp"
 
 #include <string>
