@@ -1,4 +1,5 @@
 #include <graphics/graphics_engine.hpp>
+#include <configuration/game_config.hpp>
 
 
 int main() {
