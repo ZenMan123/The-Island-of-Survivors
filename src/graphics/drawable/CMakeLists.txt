@@ -2,6 +2,7 @@
 set(TARGET_NAME drawable)
 
 add_library(${TARGET_NAME}
+    drawable_object.cpp
     resource.cpp
 )
 
