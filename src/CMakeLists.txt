@@ -8,6 +8,7 @@ add_executable(${PROJECT_NAME} main.cpp)
 
 # Add link libraries
 target_link_libraries(${PROJECT_NAME}
+    drawable
     sfml-graphics
     utils
 )
