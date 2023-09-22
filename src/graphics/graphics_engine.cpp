@@ -1,6 +1,4 @@
 #include "graphics_engine.hpp"
-#include "common/utils/functions.hpp"
-#include <stdint.h>
 
 
 // Constructors
