@@ -11,8 +11,8 @@ class AssociativeStorage {
     std::vector<std::pair<size_t, ValueType>> values_;
 
 public:
-    using Iterator = std::vector<std::pair<size_t, ValueType>>::iterator;
-    using ConstIterator = std::vector<std::pair<size_t, ValueType>>::const_iterator;
+    using Iterator = typename std::vector<std::pair<size_t, ValueType>>::iterator;
+    using ConstIterator = typename std::vector<std::pair<size_t, ValueType>>::const_iterator;
 
     // Constructors
     AssociativeStorage() noexcept {
