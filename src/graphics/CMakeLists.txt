@@ -6,6 +6,7 @@ set(TARGET_NAME graphics)
 
 add_library(${TARGET_NAME}
     graphics_context.cpp
+    graphics_engine.cpp
 )
 
 # Add link libraries

@@ -1,18 +1,20 @@
-#include <graphics/graphics_context.hpp>
-
-#include <iostream>
+#include <SFML/Window/WindowStyle.hpp>
+#include <algorithm>
+#include <graphics/graphics_engine.hpp>
 
 
 int main() {
-    std::cout << "Hello world!\n";
-
     Resource::Ptr resource = std::make_unique<ColorResource>(sf::Color(255, 0, 0));
 
     Vec2 position(0.0);
     Vec2 size(100.0);
-    DrawableObject object(position, size, std::move(resource));
+    DrawableObject::Ptr object = std::make_shared<DrawableObject>(position, size, std::move(resource));
 
-    RenderWindowPtr window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "Hello world window");
+    RenderWindowPtr window = GraphicsEngine::create_window("Hello world window", sf::Style::Default);
+    GraphicsEngine graphics_engine(window);
+
+    GraphicsContext::GetInstance()->drawable_objects.insert(std::move(object));
+
     while (window->isOpen()) {
         for (sf::Event event; window->pollEvent(event);) {
             if (event.type == sf::Event::Closed) {
@@ -22,7 +24,7 @@ int main() {
 
         window->clear(sf::Color::Black);
 
-        object.draw(window);
+        graphics_engine.draw();
 
         window->display();
     }
