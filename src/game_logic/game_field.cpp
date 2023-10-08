@@ -1,3 +1,0 @@
-class GameField {
-    GameField()
-};
