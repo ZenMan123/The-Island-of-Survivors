@@ -12,10 +12,10 @@ namespace app_config::game {
     };
 
     std::unordered_map<int, GameActions> KEY_BINDINGS = {
-            {sf::Keyboard::A, GameActions::MOVE_LEFT},
-            {sf::Keyboard::D, GameActions::MOVE_RIGHT},
-            {sf::Keyboard::Space, GameActions::JUMP},
-            {sf::Keyboard::LShift, GameActions::RUN}
+            {sf::Keyboard::Scan::A, GameActions::MOVE_LEFT},
+            {sf::Keyboard::Scan::D, GameActions::MOVE_RIGHT},
+            {sf::Keyboard::Scan::Space, GameActions::JUMP},
+            {sf::Keyboard::Scan::LShift, GameActions::RUN}
     };
 
 } // app_config::game
