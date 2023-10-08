@@ -14,7 +14,7 @@ struct Edge {
     Vec2 end;
 
     struct Intersection {
-        uint8_t number_intersections;
+        uint8_t number_intersections = 0;
 
         bool penetrate[2];
         Vec2 intersections[2];
@@ -28,17 +28,17 @@ class ObjectBorder {
     Vec2 right_top_;
 
     bool has_border_ = false;
-    
-    bool is_intersect(const ObjectBorder& other) const noexcept;
 
 public:
+    using Ptr = std::shared_ptr<ObjectBorder>;
+
     // Constructors
     ObjectBorder() noexcept;
 
     ObjectBorder(const Vec2& left_bottom, const Vec2& right_top) noexcept;
 
     // Common methods
-    void intersect(const ObjectBorder& other, std::vector<Intersection>& intersections) const;
+    void intersect(ObjectBorder::Ptr other, std::vector<Intersection>& intersections) const;
 
     // Interface
 
@@ -52,7 +52,11 @@ public:
     virtual Edge::Intersection intersect_edge(const Edge& edge) const noexcept = 0;
 
     virtual ~ObjectBorder() {}
+
+private:
+    bool is_intersect(ObjectBorder::Ptr other) const noexcept;
 };
+
 
 // Simle box border
 class BoxBorder : public ObjectBorder {

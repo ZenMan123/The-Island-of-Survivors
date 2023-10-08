@@ -13,13 +13,13 @@ ObjectBorder::ObjectBorder(const Vec2& left_bottom, const Vec2& right_top) noexc
     , has_border_(true)
 {}
 
-bool ObjectBorder::is_intersect(const ObjectBorder& other) const noexcept {
-    return !has_border_ || !other.has_border_
-        || std::max(left_bottom_.x, other.left_bottom_.x) + EPS <= std::min(right_top_.x, other.right_top_.x) - EPS
-        || std::max(left_bottom_.y, other.left_bottom_.y) + EPS <= std::min(right_top_.y, other.right_top_.y) - EPS;
+bool ObjectBorder::is_intersect(ObjectBorder::Ptr other) const noexcept {
+    return !has_border_ || !other->has_border_
+        || std::max(left_bottom_.x, other->left_bottom_.x) + EPS <= std::min(right_top_.x, other->right_top_.x) - EPS
+        || std::max(left_bottom_.y, other->left_bottom_.y) + EPS <= std::min(right_top_.y, other->right_top_.y) - EPS;
 }
 
-void ObjectBorder::intersect(const ObjectBorder& other, std::vector<Intersection>& intersections) const {
+void ObjectBorder::intersect(ObjectBorder::Ptr other, std::vector<Intersection>& intersections) const {
     if (!is_intersect(other)) {
         return;
     }
@@ -28,7 +28,7 @@ void ObjectBorder::intersect(const ObjectBorder& other, std::vector<Intersection
     Vec2 first_point;
     Vec2 last_point;
     for (size_t i = 0; i < size() && number_intersections < 2; ++i) {
-        Edge::Intersection intersection = other.intersect_edge(get_edge(i));
+        Edge::Intersection intersection = other->intersect_edge(get_edge(i));
         number_intersections += intersection.number_intersections;
 
         for (size_t id = 0; id < intersection.number_intersections; ++id) {
@@ -40,7 +40,7 @@ void ObjectBorder::intersect(const ObjectBorder& other, std::vector<Intersection
         }
     }
 
-    intersections.push_back({.penetration = (first_point - last_point).length(), .direction = (first_point - last_point).rotate90()});
+    intersections.push_back({.penetration = (last_point - first_point).length(), .direction = (last_point - first_point).rotate90()});
 }
 
 
@@ -115,8 +115,8 @@ Edge::Intersection BoxBorder::intersect_edge(const Edge& edge) const noexcept {
             return result;
         }
 
-        double left_x = std::max(edge.start.x, edge.end.x);
-        double right_x = std::min(edge.start.x, edge.end.x);
+        double right_x = std::max(edge.start.x, edge.end.x);
+        double left_x = std::min(edge.start.x, edge.end.x);
 
         if (left_x > right.start.x - EPS || right_x < left.start.x + EPS) {
             return result;
