@@ -6,7 +6,7 @@
 class AppRunner {
 public:
     AppRunner();
-    void run_game();
+    void run();
 
 private:
     Game game_;
