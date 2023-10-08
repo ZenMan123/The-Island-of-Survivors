@@ -2,9 +2,11 @@
 
 
 // Constructors
-GraphicsEngine::GraphicsEngine(RenderWindowPtr target) noexcept
-    : target_(std::move(target))
-{}
+GraphicsEngine::GraphicsEngine() noexcept = default;
+
+void GraphicsEngine::Init(RenderWindowPtr target) noexcept {
+    target_ = std::move(target);
+}
 
 // Common functions
 void GraphicsEngine::draw() const {

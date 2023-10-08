@@ -11,7 +11,7 @@ namespace app_config::game {
         RUN,
     };
 
-    std::unordered_map<int, GameActions> KEY_BINDINGS = {
+    static std::unordered_map<int, GameActions> KEY_BINDINGS = {
             {sf::Keyboard::Scan::A, GameActions::MOVE_LEFT},
             {sf::Keyboard::Scan::D, GameActions::MOVE_RIGHT},
             {sf::Keyboard::Scan::Space, GameActions::JUMP},
