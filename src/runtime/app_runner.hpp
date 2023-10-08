@@ -1,14 +1,17 @@
 #pragma once
 
 #include <game_logic/game.hpp>
+#include <graphics/graphics_engine.hpp>
 #include <SFML/Graphics.hpp>
 
 class AppRunner {
 public:
     AppRunner();
+    void Init();
+    void Draw() const;
     void run();
 
 private:
     Game game_;
-    sf::Window window_;
+    RenderWindowPtr window_;
 };

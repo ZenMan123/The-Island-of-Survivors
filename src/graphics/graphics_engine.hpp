@@ -11,7 +11,9 @@ class GraphicsEngine {
 
 public:
     // Constructors
-    GraphicsEngine(RenderWindowPtr target) noexcept;
+    GraphicsEngine() noexcept;
+
+    void Init(RenderWindowPtr target) noexcept;
 
     // Common functions
     void draw() const;
