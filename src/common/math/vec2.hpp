@@ -71,6 +71,8 @@ public:
     double length() const;
 
     Vec2 normalize() const noexcept;
+
+    Vec2 rotate90() const noexcept;
 };
 
 // External operators

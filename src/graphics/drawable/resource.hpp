@@ -13,6 +13,8 @@ public:
 
     // Common functions
     virtual void draw(RenderWindowPtr target, const Vec2& position, const Vec2& size) = 0;
+
+    virtual ~Resource() {}
 };
 
 

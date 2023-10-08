@@ -129,6 +129,10 @@ Vec2 Vec2::normalize() const noexcept {
     return *this / vect_length;
 }
 
+Vec2 Vec2::rotate90() const noexcept {
+    return Vec2(-y, x);
+}
+
 // External operators
 std::ostream& operator<<(std::ostream& fout, const Vec2& vector) {
     fout << '(' << vector.x << ", " << vector.y << ')';
