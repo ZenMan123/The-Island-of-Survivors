@@ -22,6 +22,10 @@ void Game::Draw() const {
     graphics_engine_.draw();
 }
 
+void Game::Update(double time) {
+
+}
+
 void Game::process_event(const sf::Event& event) {
     switch (event.type) {
         case sf::Event::KeyPressed:

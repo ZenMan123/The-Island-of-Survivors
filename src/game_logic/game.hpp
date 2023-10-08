@@ -10,6 +10,7 @@ public:
     void Init(RenderWindowPtr window);
     void process_event(const sf::Event& event);
     void Draw() const;
+    void Update(double time);
 
 private:
     void process_key_pressed_(const sf::Event& event);
