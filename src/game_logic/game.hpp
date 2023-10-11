@@ -3,6 +3,7 @@
 #include <configuration/app_config.hpp>
 #include <graphics/graphics_engine.hpp>
 #include <SFML/Graphics.hpp>
+#include <player/player.hpp>
 
 class Game {
 public:
@@ -13,9 +14,7 @@ public:
     void Update(double time);
 
 private:
-    void process_key_pressed_(const sf::Event& event);
-    void process_key_released_(const sf::Event& event);
-
+    Player main_player_;
     RenderWindowPtr window_;
     GraphicsEngine graphics_engine_;
 };

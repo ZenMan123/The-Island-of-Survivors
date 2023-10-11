@@ -9,6 +9,7 @@ namespace app_config::game {
         MOVE_RIGHT,
         JUMP,
         RUN,
+        UNKNOWN,
     };
 
     static std::unordered_map<int, GameActions> KEY_BINDINGS = {
