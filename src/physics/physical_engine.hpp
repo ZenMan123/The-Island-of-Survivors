@@ -5,6 +5,8 @@
 
 // 2D graphics engine
 class PhysicalEngine {
+    PhysicalContext* context_;
+
 public:
     // Constructors
     PhysicalEngine() noexcept;
@@ -12,5 +14,5 @@ public:
     void Init() noexcept;
 
     // Common functions
-    void update() const;
+    void update(double time) const;
 };
