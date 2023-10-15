@@ -29,10 +29,6 @@ void PhysicalObject::intersect(PhysicalObject::Ptr other, std::vector<Intersecti
 }
 
 void PhysicalObject::update(double time) noexcept {
-    if (!movable_) {
-        return;
-    }
-    
     position += speed * time;
 }
 
