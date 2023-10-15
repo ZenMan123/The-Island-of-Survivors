@@ -4,19 +4,21 @@
 // Constructors
 PhysicalObject::PhysicalObject() {}
 
-void PhysicalObject::Init(const Vec2& position, double restitution) {
+void PhysicalObject::init(const Vec2& position, double restitution) {
     movable_ = false;
     reversed_weight_ = 0.0;
     restitution_ = restitution;
     this->position = position;
+
     ENSURE(restitution_ >= 0, InvalidArgument, "Restitution must be greater than zero");
 }
 
-void PhysicalObject::Init(const Vec2& position, double weight, double restitution) {
+void PhysicalObject::init(const Vec2& position, double weight, double restitution) {
     movable_ = true;
     reversed_weight_ = 1.0 / weight;
     restitution_ = restitution;
     this->position = position;
+
     ENSURE(reversed_weight_ >= 0, InvalidArgument, "Weight must be greater than zero");
     ENSURE(restitution_ >= 0, InvalidArgument, "Restitution must be greater than zero");
 }

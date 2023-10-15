@@ -20,9 +20,9 @@ public:
     // Constructors
     PhysicalObject();
 
-    void Init(const Vec2& position, double restitution);
+    void init(const Vec2& position, double restitution);
 
-    void Init(const Vec2& position, double weight, double restitution);
+    void init(const Vec2& position, double weight, double restitution);
 
     // Common methods
     void intersect(PhysicalObject::Ptr other, std::vector<Intersection>& intersections) const;
