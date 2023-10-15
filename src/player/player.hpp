@@ -1,4 +1,6 @@
-#include <configuration/game_config.hpp>
+#pragma once
+
+#include <configuration/app_config.hpp>
 #include <physics/physical_objects/physical_object.hpp>
 
 class Player : public PhysicalObject {

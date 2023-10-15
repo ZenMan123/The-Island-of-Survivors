@@ -2,9 +2,11 @@
 set(TARGET_NAME player)
 
 add_library(${TARGET_NAME}
-        player.cpp
-        )
+    player.cpp
+)
 
 # Add link libraries
 target_link_libraries(${TARGET_NAME}
-        )
+    sfml-graphics
+    physical_objects
+)
