@@ -3,11 +3,29 @@
 #include "object_border.hpp"
 
 
+struct PhysicalObjectConfig {
+private:
+    bool movable_ = false;
+
+public:
+    double weight;
+    double restitution;
+
+    // Constructors
+    PhysicalObjectConfig() noexcept;
+
+    PhysicalObjectConfig(double restitution);
+    
+    PhysicalObjectConfig(double weight, double restitution);
+
+    // Common methods
+    double get_reversed_weight() const noexcept;
+};
+
+
 // Common interface for physical objects 
 class PhysicalObject {
-    bool movable_ = false;
-    double reversed_weight_ = 0.0;
-    double restitution_ = 0.0;
+    PhysicalObjectConfig object_config_;
 
 public:
     using Ptr = std::shared_ptr<PhysicalObject>;
@@ -20,9 +38,7 @@ public:
     // Constructors
     PhysicalObject();
 
-    void init(const Vec2& position, double restitution);
-
-    void init(const Vec2& position, double weight, double restitution);
+    void init(PhysicalObjectConfig object_config);
 
     // Common methods
     void intersect(PhysicalObject::Ptr other, std::vector<Intersection>& intersections) const;

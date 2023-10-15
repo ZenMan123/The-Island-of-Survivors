@@ -1,26 +1,37 @@
 #include "physical_object.hpp"
 
+//// PhysicalObjectConfig
 
 // Constructors
-PhysicalObject::PhysicalObject() {}
-
-void PhysicalObject::init(const Vec2& position, double restitution) {
-    movable_ = false;
-    reversed_weight_ = 0.0;
-    restitution_ = restitution;
-    this->position = position;
-
-    ENSURE(restitution_ >= 0, InvalidArgument, "Restitution must be greater than zero");
+PhysicalObjectConfig::PhysicalObjectConfig() noexcept {
 }
 
-void PhysicalObject::init(const Vec2& position, double weight, double restitution) {
-    movable_ = true;
-    reversed_weight_ = 1.0 / weight;
-    restitution_ = restitution;
-    this->position = position;
+PhysicalObjectConfig::PhysicalObjectConfig(double restitution) 
+    : movable_(false)
+    , weight(0.0)
+    , restitution(restitution)
+{
+    ENSURE(restitution >= 0, InvalidArgument, "Restitution must be greater than zero");
+}
 
-    ENSURE(reversed_weight_ >= 0, InvalidArgument, "Weight must be greater than zero");
-    ENSURE(restitution_ >= 0, InvalidArgument, "Restitution must be greater than zero");
+PhysicalObjectConfig::PhysicalObjectConfig(double weight, double restitution) 
+    : movable_(true)
+    , weight(weight)
+    , restitution(restitution)
+{
+    ENSURE(weight > 0, InvalidArgument, "Weight must be greater than zero");
+    ENSURE(restitution >= 0, InvalidArgument, "Restitution must be greater than zero");
+}
+
+// Common methods
+double PhysicalObjectConfig::get_reversed_weight() const noexcept {
+    return movable_ ? 1.0 / weight : 0.0;
+}
+
+//// PhysicalObject
+
+// Constructors
+PhysicalObject::PhysicalObject() {
 }
 
 // Common methods
@@ -40,10 +51,13 @@ void PhysicalObject::apply_intersection(const Intersection& intersection, Physic
         return;
     }
 
-    double ratio = std::min(restitution_, other->restitution_);
+    double ratio = std::min(object_config_.restitution, other->object_config_.restitution);
     
-    Vec2 impulse = (-(1.0 + ratio) * projected_velocity / (reversed_weight_ + other->reversed_weight_)) * normal;
+    double this_weight = object_config_.get_reversed_weight();
+    double other_weight = other->object_config_.get_reversed_weight();
 
-    speed -= impulse * reversed_weight_;
-    other->speed += impulse * reversed_weight_;
+    Vec2 impulse = (-(1.0 + ratio) * projected_velocity / (this_weight + other_weight)) * normal;
+
+    speed -= impulse * this_weight;
+    other->speed += impulse * other_weight;
 }
