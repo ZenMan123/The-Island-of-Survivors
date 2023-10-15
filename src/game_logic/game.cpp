@@ -3,12 +3,12 @@
 
 Game::Game() = default;
 
-void Game::Init(RenderWindowPtr window) {
+void Game::init(RenderWindowPtr window) {
     window_ = std::move(window);
-    graphics_engine_.Init(Camera(window_, 10, {0, 0}));
+    graphics_engine_.init(Camera(window_, 10, {0, 0}));
 }
 
-void Game::Draw() const {
+void Game::draw() const {
     Resource::Ptr resource = std::make_unique<ColorResource>(sf::Color(255, 0, 0));
 
     Vec2 position(0.0);

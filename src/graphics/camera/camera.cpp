@@ -8,7 +8,7 @@ Camera::Camera() noexcept {
 Camera::Camera(RenderWindowPtr target, double width, const Vec2& position)
     : target_(std::move(target))
     , width_(width)
-    , height_(double(target->getSize().y) * width / double(target->getSize().x))
+    , height_(double(target_->getSize().y) * width / double(target_->getSize().x))
     , position(position)
 {
     ENSURE(width_ > 0.0, InvalidArgument, "Width must be greater than zero");

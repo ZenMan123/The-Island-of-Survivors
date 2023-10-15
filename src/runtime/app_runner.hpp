@@ -7,9 +7,9 @@
 class AppRunner {
 public:
     AppRunner();
-    void Init();
-    void Draw() const;
-    void Update(double time);
+    void init();
+    void draw() const;
+    void update(double time);
     void run();
 
 private:

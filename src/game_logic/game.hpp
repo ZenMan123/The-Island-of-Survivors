@@ -8,9 +8,9 @@
 class Game {
 public:
     Game();
-    void Init(RenderWindowPtr window);
+    void init(RenderWindowPtr window);
     void process_event(const sf::Event& event);
-    void Draw() const;
+    void draw() const;
     void Update(double time);
 
 private:

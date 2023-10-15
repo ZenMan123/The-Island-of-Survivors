@@ -13,7 +13,7 @@ public:
     // Constructors
     GraphicsEngine() noexcept;
 
-    void Init(const Camera& camera) noexcept;
+    void init(const Camera& camera) noexcept;
 
     // Common functions
     void draw() const;

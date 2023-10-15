@@ -4,18 +4,18 @@
 
 AppRunner::AppRunner() = default;
 
-void AppRunner::Init() {
+void AppRunner::init() {
     window_ = GraphicsEngine::create_window(app_config::APPLICATION_NAME,
                                             sf::Style::Default);
-    game_.Init(window_);
+    game_.init(window_);
 }
 
-void AppRunner::Draw() const {
-    game_.Draw();
+void AppRunner::draw() const {
+    game_.draw();
     window_->display();
 }
 
-void AppRunner::Update(double time) {
+void AppRunner::update(double time) {
     game_.Update(time);
 }
 
@@ -24,8 +24,8 @@ void AppRunner::run() {
     sf::Clock clock;
 
     while (window_->isOpen()) {
-        Update(clock.restart().asSeconds());
-        Draw();
+        update(clock.restart().asSeconds());
+        draw();
         while (window_->pollEvent(event)) {
             game_.process_event(event);
             switch (event.type) {

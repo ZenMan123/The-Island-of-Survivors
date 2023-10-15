@@ -6,7 +6,7 @@ GraphicsEngine::GraphicsEngine() noexcept
     : context_(GraphicsContext::GetInstance())
 {}
 
-void GraphicsEngine::Init(const Camera& camera) noexcept {
+void GraphicsEngine::init(const Camera& camera) noexcept {
     camera_ = camera;
 }
 
