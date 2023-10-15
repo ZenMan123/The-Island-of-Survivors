@@ -11,9 +11,9 @@ public:
 
     void Init();
 
-    void Update(double time);
+    void update(double time);
 
-    void ProcessEvent(const sf::Event& event);
+    void process_event(const sf::Event& event);
 
 private:
     app_config::game::GameActions get_game_action_(const sf::Event& event);

@@ -2,11 +2,11 @@
 
 Player::Player(){};
 
-void Player::Update(double time) {
+void Player::update(double time) {
     Base::update(time);
 }
 
-void Player::ProcessEvent(const sf::Event& event) {
+void Player::process_event(const sf::Event& event) {
     switch (event.type) {
         case sf::Event::KeyPressed:
             process_event_pressed_(event);
