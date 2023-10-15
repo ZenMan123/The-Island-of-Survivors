@@ -7,13 +7,23 @@ GraphicsEngine::GraphicsEngine() noexcept
 {}
 
 void GraphicsEngine::init(const Camera& camera) noexcept {
-    camera_ = camera;
+    this->camera = camera;
 }
 
 // Common functions
 void GraphicsEngine::draw() const {
     for (const auto& [id, object] : context_->drawable_objects) {
-        object->draw(camera_);
+        object->draw(camera);
+    }
+}
+
+void GraphicsEngine::folllow(PhysicalObject::Ptr object) noexcept {
+    folllow_object_ = object;
+}
+
+void GraphicsEngine::update(double time) noexcept {
+    if (folllow_object_) {
+        camera.position = folllow_object_->position;
     }
 }
 
