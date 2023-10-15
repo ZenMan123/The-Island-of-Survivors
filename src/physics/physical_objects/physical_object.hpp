@@ -5,9 +5,9 @@
 
 // Common interface for physical objects 
 class PhysicalObject {
-    bool movable_;
-    double reversed_weight_;
-    double restitution_;
+    bool movable_ = false;
+    double reversed_weight_ = 0.0;
+    double restitution_ = 0.0;
 
 public:
     using Ptr = std::shared_ptr<PhysicalObject>;
@@ -18,9 +18,11 @@ public:
     ObjectBorder::Ptr border;
 
     // Constructors
-    PhysicalObject(const Vec2& position, double restitution);
-    
-    PhysicalObject(const Vec2& position, double weight, double restitution);
+    PhysicalObject();
+
+    void Init(const Vec2& position, double restitution);
+
+    void Init(const Vec2& position, double weight, double restitution);
 
     // Common methods
     void intersect(PhysicalObject::Ptr other, std::vector<Intersection>& intersections) const;

@@ -4,9 +4,8 @@
 Game::Game() = default;
 
 void Game::Init(RenderWindowPtr window) {
-
     window_ = std::move(window);
-    graphics_engine_.Init(window_);
+    graphics_engine_.Init(Camera(window_, 10, {0, 0}));
 }
 
 void Game::Draw() const {

@@ -3,7 +3,7 @@
 #include <configuration/app_config.hpp>
 #include <graphics/graphics_engine.hpp>
 #include <SFML/Graphics.hpp>
-#include <player/player.hpp>
+// #include <player/player.hpp>
 
 class Game {
 public:
