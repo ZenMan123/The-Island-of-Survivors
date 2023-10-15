@@ -38,12 +38,15 @@ public:
     // Constructors
     PhysicalObject();
 
+    // Destructors
+    virtual ~PhysicalObject();
+
     void init(PhysicalObjectConfig object_config);
 
     // Common methods
-    void intersect(PhysicalObject::Ptr other, std::vector<Intersection>& intersections) const;
+    void intersect(const PhysicalObject::Ptr& other, std::vector<Intersection>& intersections) const;
 
-    void update(double time) noexcept;
+    void update_basic(double time) noexcept;
 
-    void apply_intersection(const Intersection& intersection, PhysicalObject::Ptr other) noexcept;
+    void apply_intersection(const Intersection& intersection, const PhysicalObject::Ptr& other) noexcept;
 };

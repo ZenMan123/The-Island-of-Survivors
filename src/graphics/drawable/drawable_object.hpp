@@ -25,11 +25,14 @@ public:
 
     DrawableObject(const Vec2& position, const Vec2& size, Resource::Ptr resource) noexcept;
 
+    // Destructors
+    virtual ~DrawableObject();
+
     // Setters
     void set_size(const Vec2& size) noexcept;
 
     // Getters
-    Vec2 get_size() const noexcept;
+    [[nodiscard]] Vec2 get_size() const noexcept;
     
     // Common functions
     void draw(const Camera& camera) const;

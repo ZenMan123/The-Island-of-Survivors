@@ -30,23 +30,25 @@ double PhysicalObjectConfig::get_reversed_weight() const noexcept {
 //// PhysicalObject
 
 // Constructors
-PhysicalObject::PhysicalObject() {
-}
+PhysicalObject::PhysicalObject() = default;
 
 void PhysicalObject::init(PhysicalObjectConfig object_config) {
     object_config_ = object_config;
 }
 
+// Destructors
+PhysicalObject::~PhysicalObject() = default;
+
 // Common methods
-void PhysicalObject::intersect(PhysicalObject::Ptr other, std::vector<Intersection>& intersections) const {
+void PhysicalObject::intersect(const PhysicalObject::Ptr& other, std::vector<Intersection>& intersections) const {
     border->intersect(other->border, intersections);
 }
 
-void PhysicalObject::update(double time) noexcept {
+void PhysicalObject::update_basic(double time) noexcept {
     position += speed * time;
 }
 
-void PhysicalObject::apply_intersection(const Intersection& intersection, PhysicalObject::Ptr other) noexcept {
+void PhysicalObject::apply_intersection(const Intersection& intersection, const PhysicalObject::Ptr& other) noexcept {
     Vec2 normal = intersection.direction.normalize();
     
     double projected_velocity = (other->speed - speed) * normal;
@@ -64,3 +66,4 @@ void PhysicalObject::apply_intersection(const Intersection& intersection, Physic
     speed -= impulse * this_weight;
     other->speed += impulse * other_weight;
 }
+

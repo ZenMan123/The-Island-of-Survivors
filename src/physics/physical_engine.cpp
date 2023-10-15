@@ -12,7 +12,7 @@ void PhysicalEngine::init() noexcept {
 // Common functions
 void PhysicalEngine::update(double time) {
     for (const auto& [id, object] : context_->movable_objects) {
-        object->update(time);
+        object->update_basic(time);
 
         for (const auto& [intersect_id, intersect_object] : context_->movable_objects) {
             if (id == intersect_id) {

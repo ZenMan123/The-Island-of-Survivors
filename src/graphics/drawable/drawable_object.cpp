@@ -18,6 +18,9 @@ DrawableObject::DrawableObject(const Vec2& position, const Vec2& size, Resource:
     CHECK(size.x >= 0 && size.y >= 0, "invalid resource size");
 }
 
+// Destructors
+DrawableObject::~DrawableObject() = default;
+
 // Setters
 void DrawableObject::set_size(const Vec2& size) noexcept {
     CHECK(size.x >= 0 && size.y >= 0, "invalid resource size");

@@ -8,7 +8,9 @@ void Game::init(RenderWindowPtr window) {
 
     main_player_ptr_ = std::make_shared<Player>();
     main_player_ptr_->init();
-    PhysicalContext::GetInstance()->movable_objects.insert(main_player_ptr_);
+
+    game_map_.init();
+
     graphics_engine_.init(Camera(window_, 10, {0, 0}));
     physics_engine_.init();
 }

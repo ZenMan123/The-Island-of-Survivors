@@ -6,7 +6,7 @@
 #include <graphics/drawable/drawable_object.hpp>
 #include <physics/physical_objects/physical_object.hpp>
 
-class Player : public PhysicalObject {
+class Player : public PhysicalObject, public std::enable_shared_from_this<Player> {
     using Base = PhysicalObject;
 
 public:
@@ -24,7 +24,9 @@ private:
     PlayerCondition condition_;
     DrawableObject::Ptr player_sprite_ptr_;
 
-    app_config::game::GameActions get_game_action_(const sf::Event& event);
+    void initialize_player_sprite();
+
+    static app_config::game::GameActions get_game_action_(const sf::Event& event);
 
     void process_event_pressed_(const sf::Event& event);
 

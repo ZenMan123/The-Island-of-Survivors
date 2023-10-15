@@ -1,4 +1,5 @@
 # Add source directories
+add_subdirectory(game_map)
 add_subdirectory(player)
 
 # Merge all cpp files in library
@@ -10,6 +11,7 @@ add_library(${TARGET_NAME}
 
 # Add link libraries
 target_link_libraries(${TARGET_NAME}
+        game_map
         graphics
         player
         physics

@@ -21,8 +21,8 @@ void AppRunner::update(double time) {
 }
 
 void AppRunner::run() {
-    sf::Event event;
-    sf::Clock clock;
+    sf::Event event{};
+    sf::Clock clock{};
 
     while (window_->isOpen()) {
         update(clock.restart().asSeconds());
