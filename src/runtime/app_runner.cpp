@@ -15,9 +15,16 @@ void AppRunner::Draw() const {
     window_->display();
 }
 
+void AppRunner::Update(double time) {
+    game_.Update(time);
+}
+
 void AppRunner::run() {
     sf::Event event;
+    sf::Clock clock;
+
     while (window_->isOpen()) {
+        Update(clock.restart().asSeconds());
         Draw();
         while (window_->pollEvent(event)) {
             game_.process_event(event);
