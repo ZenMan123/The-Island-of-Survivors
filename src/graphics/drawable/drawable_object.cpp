@@ -2,10 +2,17 @@
 
 
 // Constructors
+DrawableObject::DrawableObject(const Vec2& position, const Vec2& size) noexcept
+    : position(position)
+    , size(size)
+{
+    CHECK(size.x >= 0 && size.y >= 0, "invalid resource size");
+}
+
 DrawableObject::DrawableObject(const Vec2& position, const Vec2& size, Resource::Ptr resource) noexcept
     : position(position)
     , size(size)
-    , resource(std::move(resource))
+    , drawable_resource_(std::move(resource))
 {
     CHECK(size.x >= 0 && size.y >= 0, "invalid resource size");
 }
@@ -23,5 +30,10 @@ Vec2 DrawableObject::get_size() const noexcept {
     
 // Common functions
 void DrawableObject::draw(RenderWindowPtr target) const {
-    resource->draw(target, position, size);
+    drawable_resource_->draw(target, position, size);
+}
+
+// Protected functions
+void DrawableObject::set_drawable_resource(Resource::Ptr resource) noexcept {
+    drawable_resource_ = std::move(resource);
 }

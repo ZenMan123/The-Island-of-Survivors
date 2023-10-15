@@ -2,8 +2,6 @@
 
 #include "graphics_context.hpp"
 
-#include <string>
-
 
 // 2D graphics engine
 class GraphicsEngine {
