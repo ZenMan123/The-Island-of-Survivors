@@ -17,13 +17,13 @@ void GraphicsEngine::draw() const {
     }
 }
 
-void GraphicsEngine::folllow(PhysicalObject::Ptr object) noexcept {
-    folllow_object_ = object;
+void GraphicsEngine::follow(PhysicalObject::Ptr object) noexcept {
+    follow_object_ = object;
 }
 
 void GraphicsEngine::update(double time) noexcept {
-    if (folllow_object_) {
-        camera.position = folllow_object_->position;
+    if (follow_object_) {
+        camera.position = follow_object_->position;
     }
 }
 

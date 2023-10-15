@@ -8,7 +8,7 @@
 // 2D graphics engine
 class GraphicsEngine {
     GraphicsContext* context_ = nullptr;
-    PhysicalObject::Ptr folllow_object_ = nullptr;
+    PhysicalObject::Ptr follow_object_ = nullptr;
 
 public:
     Camera camera;
@@ -21,7 +21,7 @@ public:
     // Common functions
     void draw() const;
 
-    void folllow(PhysicalObject::Ptr object) noexcept;
+    void follow(PhysicalObject::Ptr object) noexcept;
 
     void update(double time) noexcept;
 
