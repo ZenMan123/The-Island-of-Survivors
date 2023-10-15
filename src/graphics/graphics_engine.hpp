@@ -5,13 +5,15 @@
 
 // 2D graphics engine
 class GraphicsEngine {
-    RenderWindowPtr target_;
+    Camera camera_;
+    
+    GraphicsContext* context_ = nullptr;
 
 public:
     // Constructors
     GraphicsEngine() noexcept;
 
-    void Init(RenderWindowPtr target) noexcept;
+    void Init(const Camera& camera) noexcept;
 
     // Common functions
     void draw() const;

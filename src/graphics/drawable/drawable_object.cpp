@@ -1,4 +1,5 @@
 #include "drawable_object.hpp"
+#include "graphics/camera/camera.hpp"
 
 
 // Constructors
@@ -29,8 +30,12 @@ Vec2 DrawableObject::get_size() const noexcept {
 }
     
 // Common functions
-void DrawableObject::draw(RenderWindowPtr target) const {
-    drawable_resource_->draw(target, position, size);
+void DrawableObject::draw(const Camera& camera) const {
+    drawable_resource_->draw(
+        camera.get_target(),
+        camera.convert_point(position),
+        camera.convert_size(size)
+    );
 }
 
 // Protected functions

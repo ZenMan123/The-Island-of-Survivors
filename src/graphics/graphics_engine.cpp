@@ -2,17 +2,18 @@
 
 
 // Constructors
-GraphicsEngine::GraphicsEngine() noexcept {
-}
+GraphicsEngine::GraphicsEngine() noexcept
+    : context_(GraphicsContext::GetInstance())
+{}
 
-void GraphicsEngine::Init(RenderWindowPtr target) noexcept {
-    target_ = std::move(target);
+void GraphicsEngine::Init(const Camera& camera) noexcept {
+    camera_ = camera;
 }
 
 // Common functions
 void GraphicsEngine::draw() const {
-    for (const auto& [id, object] : GraphicsContext::GetInstance()->drawable_objects) {
-        object->draw(target_);
+    for (const auto& [id, object] : context_->drawable_objects) {
+        object->draw(camera_);
     }
 }
 

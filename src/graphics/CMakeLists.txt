@@ -1,4 +1,5 @@
 # Add source directories
+add_subdirectory(camera)
 add_subdirectory(drawable)
 
 # Marge all cpp files in library

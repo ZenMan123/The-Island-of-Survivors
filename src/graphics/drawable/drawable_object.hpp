@@ -2,11 +2,13 @@
 
 #include "resource.hpp"
 
+#include <graphics/camera/camera.hpp>
+
 
 // Common interface for all drawable objects
 class DrawableObject {
     Resource::Ptr drawable_resource_;
-    
+
 protected:
     Vec2 size;
 
@@ -30,5 +32,5 @@ public:
     Vec2 get_size() const noexcept;
     
     // Common functions
-    void draw(RenderWindowPtr target) const;
+    void draw(const Camera& camera) const;
 };

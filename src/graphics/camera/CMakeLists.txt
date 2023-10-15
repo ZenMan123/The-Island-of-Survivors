@@ -1,14 +1,11 @@
 # Marge all cpp files in library
-set(TARGET_NAME drawable)
+set(TARGET_NAME camera)
 
 add_library(${TARGET_NAME}
-    drawable_object.cpp
-    resource.cpp
-    sprite.cpp
+    camera.cpp
 )
 
 # Add link libraries
 target_link_libraries(${TARGET_NAME}
-    camera
     math
 )
