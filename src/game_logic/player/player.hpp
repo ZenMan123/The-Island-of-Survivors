@@ -16,6 +16,8 @@ public:
 
     void init();
 
+    void update(double time);
+
     void process_event(const sf::Event& event);
 
 private:

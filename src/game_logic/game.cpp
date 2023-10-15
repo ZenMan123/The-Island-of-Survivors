@@ -19,6 +19,7 @@ void Game::draw() const {
 
 void Game::update(double time) {
     physics_engine_.update(time);
+    main_player_ptr_->update(time);
 }
 
 void Game::process_event(const sf::Event& event) {

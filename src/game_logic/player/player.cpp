@@ -8,7 +8,13 @@ Player::Player() {
     GraphicsContext::GetInstance()->drawable_objects.insert(player_sprite_ptr_);
 }
 
-void Player::init(){};
+void Player::init() {
+    Base::init(PhysicalObjectConfig(1.0, .1));
+};
+
+void Player::update(double time) {
+    player_sprite_ptr_->position = position;
+}
 
 void Player::process_event(const sf::Event& event) {
     switch (event.type) {

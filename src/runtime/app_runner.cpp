@@ -11,6 +11,7 @@ void AppRunner::init() {
 }
 
 void AppRunner::draw() const {
+    window_->clear();
     game_.draw();
     window_->display();
 }

@@ -1,5 +1,4 @@
 #include "physical_object.hpp"
-
 //// PhysicalObjectConfig
 
 // Constructors
@@ -32,6 +31,10 @@ double PhysicalObjectConfig::get_reversed_weight() const noexcept {
 
 // Constructors
 PhysicalObject::PhysicalObject() {
+}
+
+void PhysicalObject::init(PhysicalObjectConfig object_config) {
+    object_config_ = object_config;
 }
 
 // Common methods
