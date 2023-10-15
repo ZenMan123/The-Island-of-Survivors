@@ -3,6 +3,7 @@ set(TARGET_NAME player)
 
 add_library(${TARGET_NAME}
     player.cpp
+    player_condition.cpp
 )
 
 # Add link libraries

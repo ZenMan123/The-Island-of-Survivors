@@ -16,7 +16,7 @@ void AppRunner::draw() const {
 }
 
 void AppRunner::update(double time) {
-    game_.Update(time);
+    game_.update(time);
 }
 
 void AppRunner::run() {

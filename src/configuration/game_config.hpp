@@ -4,7 +4,7 @@
 #include <unordered_map>
 
 namespace app_config::game {
-    enum class GameActions {
+    enum GameActions {
         MOVE_LEFT,
         MOVE_RIGHT,
         JUMP,

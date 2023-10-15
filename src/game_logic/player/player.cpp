@@ -1,10 +1,9 @@
 #include "player.hpp"
+#include "physics/physical_context.hpp"
 
 Player::Player(){};
 
-void Player::update(double time) {
-    Base::update(time);
-}
+void Player::init(){};
 
 void Player::process_event(const sf::Event& event) {
     switch (event.type) {
@@ -31,7 +30,6 @@ app_config::game::GameActions Player::get_game_action_(const sf::Event& event) {
 
 void Player::process_event_pressed_(const sf::Event& event) {
     auto value = get_game_action_(event);
-
     switch (value) {
         case app_config::game::GameActions::MOVE_LEFT:
             start_move_left_();
@@ -60,11 +58,11 @@ void Player::process_event_released_(const sf::Event& event) {
 
     switch (value) {
         case app_config::game::GameActions::MOVE_LEFT:
-            stop_move_();
+            stop_move_right_();
             break;
 
         case app_config::game::GameActions::MOVE_RIGHT:
-            stop_move_();
+            stop_move_right_();
             break;
 
         case app_config::game::GameActions::JUMP:
@@ -82,13 +80,29 @@ void Player::process_event_released_(const sf::Event& event) {
 }
 
 void Player::start_move_left_() {
-    Base::speed = Vec2(-5.0, 0.0);
+    if (!condition_.is_moving_left()) {
+        Base::speed += Vec2(-5.0, 0.0);
+        condition_.set_moving_left(true);
+    }
 }
 
 void Player::start_move_right_() {
-    Base::speed = Vec2(5.0, 0.0);
+    if (!condition_.is_moving_right()) {
+        Base::speed += Vec2(5.0, 0.0);
+        condition_.set_moving_right(true);
+    }
 }
 
-void Player::stop_move_() {
-    Base::speed = Vec2(0.0, 0.0);
+void Player::stop_move_left_() {
+    if (condition_.is_moving_left()) {
+        Base::speed -= Vec2(-5.0, 0.0);
+        condition_.set_moving_left(false);
+    }
+}
+
+void Player::stop_move_right_() {
+    if (condition_.is_moving_right()) {
+        Base::speed -= Vec2(5.0, 0.0);
+        condition_.set_moving_right(false);
+    }
 }

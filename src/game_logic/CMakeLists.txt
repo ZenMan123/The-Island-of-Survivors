@@ -12,4 +12,5 @@ add_library(${TARGET_NAME}
 target_link_libraries(${TARGET_NAME}
         graphics
         player
+        physics
         )
