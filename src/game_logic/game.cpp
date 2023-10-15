@@ -28,7 +28,7 @@ void Game::Update(double time) {
 
 void Game::process_event(const sf::Event& event) {
     switch (event.type) {
-        main_player_.ProcessEvent(event);
+        main_player_.process_event(event);
 
         default:
             break;

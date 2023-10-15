@@ -1,3 +1,6 @@
+# Add source directories
+add_subdirectory(player)
+
 # Merge all cpp files in library
 set(TARGET_NAME game_logic)
 
