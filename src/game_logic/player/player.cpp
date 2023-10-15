@@ -1,7 +1,12 @@
+#include "graphics/graphics_context.hpp"
 #include "player.hpp"
 #include "physics/physical_context.hpp"
 
-Player::Player(){};
+Player::Player() {
+    Resource::Ptr resource = std::make_shared<ColorResource>(sf::Color::Green);
+    player_sprite_ptr_ = std::make_shared<DrawableObject>(this->position, Vec2(1.0), resource);
+    GraphicsContext::GetInstance()->drawable_objects.insert(player_sprite_ptr_);
+}
 
 void Player::init(){};
 
@@ -58,7 +63,7 @@ void Player::process_event_released_(const sf::Event& event) {
 
     switch (value) {
         case app_config::game::GameActions::MOVE_LEFT:
-            stop_move_right_();
+            stop_move_left_();
             break;
 
         case app_config::game::GameActions::MOVE_RIGHT:

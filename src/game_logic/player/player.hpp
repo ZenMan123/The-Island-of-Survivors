@@ -3,6 +3,7 @@
 #include "player_condition.h"
 
 #include <configuration/app_config.hpp>
+#include <graphics/drawable/drawable_object.hpp>
 #include <physics/physical_objects/physical_object.hpp>
 
 class Player : public PhysicalObject {
@@ -19,6 +20,7 @@ public:
 
 private:
     PlayerCondition condition_;
+    DrawableObject::Ptr player_sprite_ptr_;
 
     app_config::game::GameActions get_game_action_(const sf::Event& event);
 
