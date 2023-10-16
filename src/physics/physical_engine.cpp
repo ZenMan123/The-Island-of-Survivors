@@ -1,20 +1,26 @@
 #include "physical_engine.hpp"
 
 
+//// PhysicalEngine
+
 // Constructors
-PhysicalEngine::PhysicalEngine() noexcept {
-    context_ = PhysicalContext::GetInstance();
-}
+PhysicalEngine::PhysicalEngine() noexcept
+    : context_(PhysicalContext::GetInstance())
+{}
 
 void PhysicalEngine::init() noexcept {
 }
 
 // Common functions
 void PhysicalEngine::update(double time) {
-    for (const auto& [id, object] : context_->movable_objects) {
+    for (const auto& [id, object] : context_->physical_objects) {
         object->update_basic(time);
 
-        for (const auto& [intersect_id, intersect_object] : context_->movable_objects) {
+        if (!object->is_movable()) {
+            continue;
+        }
+
+        for (const auto& [intersect_id, intersect_object] : context_->physical_objects) {
             if (id == intersect_id) {
                 continue;
             }

@@ -1,7 +1,7 @@
 # Add source directories
 add_subdirectory(physical_objects)
 
-# Marge all cpp files in library
+# Merge all cpp files in library
 set(TARGET_NAME physics)
 
 add_library(${TARGET_NAME}

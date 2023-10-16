@@ -1,24 +1,19 @@
 #include "object_border.hpp"
 
 
-// ObjectBorder
+//// ObjectBorder
 
 // Constructors
 ObjectBorder::ObjectBorder() noexcept {
 }
 
-ObjectBorder::ObjectBorder(const Vec2& left_bottom, const Vec2& right_top) noexcept
-    : left_bottom_(left_bottom)
-    , right_top_(right_top)
-    , has_border_(true)
-{}
-
-bool ObjectBorder::is_intersect(ObjectBorder::Ptr other) const noexcept {
-    return !has_border_ || !other->has_border_
-        || std::max(left_bottom_.x, other->left_bottom_.x) + EPS <= std::min(right_top_.x, other->right_top_.x) - EPS
-        || std::max(left_bottom_.y, other->left_bottom_.y) + EPS <= std::min(right_top_.y, other->right_top_.y) - EPS;
+void ObjectBorder::init(const Vec2& left_bottom, const Vec2& right_top) noexcept {
+    left_bottom_ = left_bottom;
+    right_top_ = right_top;
+    has_border_ = true;
 }
 
+// Common methods
 void ObjectBorder::intersect(ObjectBorder::Ptr other, std::vector<Intersection>& intersections) const {
     if (!is_intersect(other)) {
         return;
@@ -43,17 +38,26 @@ void ObjectBorder::intersect(ObjectBorder::Ptr other, std::vector<Intersection>&
     intersections.push_back({.penetration = (last_point - first_point).length(), .direction = (last_point - first_point).rotate90()});
 }
 
+// Private methods
+bool ObjectBorder::is_intersect(ObjectBorder::Ptr other) const noexcept {
+    return !has_border_ || !other->has_border_
+        || std::max(left_bottom_.x, other->left_bottom_.x) + EPS <= std::min(right_top_.x, other->right_top_.x) - EPS
+        || std::max(left_bottom_.y, other->left_bottom_.y) + EPS <= std::min(right_top_.y, other->right_top_.y) - EPS;
+}
 
-// BoxBorder
+// Destructors
+ObjectBorder::~ObjectBorder() {
+}
+
+//// BoxBorder
 
 // Constructors
-BoxBorder::BoxBorder() noexcept
-    : Base()
+BoxBorder::BoxBorder() noexcept : Base()
 {}
 
-BoxBorder::BoxBorder(const Vec2& left_bottom, const Vec2& right_top) noexcept
-    : Base(left_bottom, right_top)
-{
+void BoxBorder::init(const Vec2& left_bottom, const Vec2& right_top) noexcept {
+    Base::init(left_bottom, right_top);
+    
     points[0] = left_bottom;
     points[1] = Vec2(left_bottom.x, right_top.y);
     points[2] = right_top;

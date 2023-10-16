@@ -19,7 +19,7 @@ public:
     void operator=(const GraphicsContext&) = delete;
     void operator=(GraphicsContext&&) = delete;
 
-    static GraphicsContext::Ptr GetInstance();
+    [[nodiscard]] static GraphicsContext::Ptr GetInstance();
 
 private:
     inline static GraphicsContext::Ptr graphics_context_ = nullptr;

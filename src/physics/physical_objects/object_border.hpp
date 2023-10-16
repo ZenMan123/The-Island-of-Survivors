@@ -35,7 +35,7 @@ public:
     // Constructors
     ObjectBorder() noexcept;
 
-    ObjectBorder(const Vec2& left_bottom, const Vec2& right_top) noexcept;
+    void init(const Vec2& left_bottom, const Vec2& right_top) noexcept;
 
     // Common methods
     void intersect(ObjectBorder::Ptr other, std::vector<Intersection>& intersections) const;
@@ -43,18 +43,20 @@ public:
     // Interface
 
     // Getters
-    virtual Edge get_edge(size_t index) const noexcept = 0;
+    [[nodiscard]] virtual Edge get_edge(size_t index) const noexcept = 0;
 
     // Statistics
-    virtual size_t size() const noexcept = 0;
+    [[nodiscard]] virtual size_t size() const noexcept = 0;
 
     // Common methods
-    virtual Edge::Intersection intersect_edge(const Edge& edge) const noexcept = 0;
+    [[nodiscard]] virtual Edge::Intersection intersect_edge(const Edge& edge) const noexcept = 0;
 
-    virtual ~ObjectBorder() {}
+    // Destructors
+    virtual ~ObjectBorder();
 
 private:
-    bool is_intersect(ObjectBorder::Ptr other) const noexcept;
+    // Private methods
+    [[nodiscard]] bool is_intersect(ObjectBorder::Ptr other) const noexcept;
 };
 
 
@@ -64,18 +66,27 @@ class BoxBorder : public ObjectBorder {
 
 public:
     using Base = ObjectBorder;
+    using Ptr = std::shared_ptr<BoxBorder>;
 
     // Constructors
     BoxBorder() noexcept;
 
-    BoxBorder(const Vec2& left_bottom, const Vec2& right_top) noexcept;
+    void init(const Vec2& left_bottom, const Vec2& right_top) noexcept;
 
     // Getters
-    Edge get_edge(size_t index) const noexcept final;
+    [[nodiscard]] Edge get_edge(size_t index) const noexcept final;
 
     // Statistics
-    size_t size() const noexcept final;
+    [[nodiscard]] size_t size() const noexcept final;
 
     // Common methods
-    Edge::Intersection intersect_edge(const Edge& edge) const noexcept final;
+    [[nodiscard]] Edge::Intersection intersect_edge(const Edge& edge) const noexcept final;
+
+    // Static functions
+    template <typename ...Args>
+    [[nodiscard]] static BoxBorder::Ptr make(Args&&... args) {
+        BoxBorder::Ptr object = std::make_shared<BoxBorder>();
+        object->init(std::forward<Args>(args)...);
+        return object;
+    }
 };

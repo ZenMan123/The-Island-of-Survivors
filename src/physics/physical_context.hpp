@@ -5,16 +5,12 @@
 #include <common/utils/associative_storage.hpp>
 
 
-// Graphic engine context
+// Physical engine context
 class PhysicalContext {
-    inline static PhysicalContext* physical_context_ = nullptr;
-
-    // Constructors
-    PhysicalContext();
-
 public:
-    AssociativeStorage<PhysicalObject::Ptr> movable_objects;
-    AssociativeStorage<PhysicalObject::Ptr> immovable_objects;
+    using Ptr = PhysicalContext*;
+
+    AssociativeStorage<PhysicalObject::Ptr> physical_objects;
 
     // Singleton
     PhysicalContext(const PhysicalContext& other) = delete;
@@ -24,4 +20,10 @@ public:
     void operator=(PhysicalContext&&) = delete;
 
     static PhysicalContext* GetInstance();
+
+private:
+    inline static PhysicalContext::Ptr physical_context_ = nullptr;
+
+    // Constructors
+    PhysicalContext();
 };

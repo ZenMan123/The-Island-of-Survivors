@@ -1,4 +1,6 @@
 #include "physical_object.hpp"
+
+
 //// PhysicalObjectConfig
 
 // Constructors
@@ -7,7 +9,7 @@ PhysicalObjectConfig::PhysicalObjectConfig() noexcept {
 
 PhysicalObjectConfig::PhysicalObjectConfig(double restitution) 
     : movable_(false)
-    , weight(0.0)
+    , reversed_weight_(0.0)
     , restitution(restitution)
 {
     ENSURE(restitution >= 0, InvalidArgument, "Restitution must be greater than zero");
@@ -15,37 +17,41 @@ PhysicalObjectConfig::PhysicalObjectConfig(double restitution)
 
 PhysicalObjectConfig::PhysicalObjectConfig(double weight, double restitution) 
     : movable_(true)
-    , weight(weight)
     , restitution(restitution)
 {
     ENSURE(weight > 0, InvalidArgument, "Weight must be greater than zero");
     ENSURE(restitution >= 0, InvalidArgument, "Restitution must be greater than zero");
+
+    reversed_weight_ = 1.0 / weight;
 }
 
 // Common methods
-double PhysicalObjectConfig::get_reversed_weight() const noexcept {
-    return movable_ ? 1.0 / weight : 0.0;
+bool PhysicalObjectConfig::is_movable() const noexcept {
+    return movable_;
 }
+
+double PhysicalObjectConfig::get_reversed_weight() const noexcept {
+    return reversed_weight_;
+}
+
 
 //// PhysicalObject
 
 // Constructors
 PhysicalObject::PhysicalObject() = default;
 
-void PhysicalObject::init(PhysicalObjectConfig object_config) {
+void PhysicalObject::init(const PhysicalObjectConfig& object_config) {
     object_config_ = object_config;
 }
 
-// Destructors
-PhysicalObject::~PhysicalObject() = default;
+// Statistics
+bool PhysicalObject::is_movable() const noexcept {
+    return object_config_.is_movable();
+}
 
 // Common methods
 void PhysicalObject::intersect(const PhysicalObject::Ptr& other, std::vector<Intersection>& intersections) const {
     border->intersect(other->border, intersections);
-}
-
-void PhysicalObject::update_basic(double time) noexcept {
-    position += speed * time;
 }
 
 void PhysicalObject::apply_intersection(const Intersection& intersection, const PhysicalObject::Ptr& other) noexcept {
@@ -67,3 +73,10 @@ void PhysicalObject::apply_intersection(const Intersection& intersection, const 
     other->speed += impulse * other_weight;
 }
 
+void PhysicalObject::update_basic(double time) noexcept {
+    position += speed * time;
+}
+
+// Destructors
+PhysicalObject::~PhysicalObject() {
+}

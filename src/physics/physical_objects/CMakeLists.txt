@@ -1,4 +1,4 @@
-# Marge all cpp files in library
+# Merge all cpp files in library
 set(TARGET_NAME physical_objects)
 
 add_library(${TARGET_NAME}

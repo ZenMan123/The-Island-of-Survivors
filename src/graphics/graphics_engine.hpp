@@ -26,5 +26,5 @@ public:
     void update(double time) noexcept;
 
     // Static functions
-    static RenderWindowPtr create_window(const std::string& title, uint32_t style = sf::Style::None);
+    [[nodiscard]] static RenderWindowPtr create_window(const std::string& title, uint32_t style = sf::Style::None);
 };

@@ -8,10 +8,7 @@ Sprite::Sprite() noexcept : Base() {
 }
 
 void Sprite::init(const Vec2& position, const Vec2& size) noexcept {
-    CHECK(size.x >= 0 && size.y >= 0, "invalid sprite size");
-
-    this->position = position;
-    this->size = size;
+    Base::init(position, size, nullptr);
 }
 
 // Common functions

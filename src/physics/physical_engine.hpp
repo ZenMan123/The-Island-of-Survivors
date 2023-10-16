@@ -10,11 +10,11 @@ struct ObjectsIntersection {
 };
 
 
-// 2D graphics engine
+// 2D physical engine
 class PhysicalEngine {
     inline static std::vector<Intersection> intersectoins_buffer_;
 
-    PhysicalContext* context_;
+    PhysicalContext::Ptr context_;
     std::vector<ObjectsIntersection> intersections_;
 
     // Private functions

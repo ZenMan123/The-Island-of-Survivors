@@ -6,10 +6,10 @@
 struct PhysicalObjectConfig {
 private:
     bool movable_ = false;
+    double reversed_weight_ = 0.0;
 
 public:
-    double weight;
-    double restitution;
+    double restitution = 0.0;
 
     // Constructors
     PhysicalObjectConfig() noexcept;
@@ -19,7 +19,9 @@ public:
     PhysicalObjectConfig(double weight, double restitution);
 
     // Common methods
-    double get_reversed_weight() const noexcept;
+    [[nodiscard]] bool is_movable() const noexcept;
+
+    [[nodiscard]] double get_reversed_weight() const noexcept;
 };
 
 
@@ -30,23 +32,33 @@ class PhysicalObject {
 public:
     using Ptr = std::shared_ptr<PhysicalObject>;
 
-    Vec2 speed = Vec2(0.0);
-
+    Vec2 speed;
     Vec2 position;
     ObjectBorder::Ptr border;
 
     // Constructors
     PhysicalObject();
 
-    // Destructors
-    virtual ~PhysicalObject();
+    void init(const PhysicalObjectConfig& object_config);
 
-    void init(PhysicalObjectConfig object_config);
+    // Statistics
+    [[nodiscard]] bool is_movable() const noexcept;
 
     // Common methods
     void intersect(const PhysicalObject::Ptr& other, std::vector<Intersection>& intersections) const;
 
+    void apply_intersection(const Intersection& intersection, const PhysicalObject::Ptr& other) noexcept;
+
     void update_basic(double time) noexcept;
 
-    void apply_intersection(const Intersection& intersection, const PhysicalObject::Ptr& other) noexcept;
+    // Destructors
+    virtual ~PhysicalObject();
+
+    // Static functions
+    template <typename ...Args>
+    [[nodiscard]] static PhysicalObject::Ptr make(Args&&... args) {
+        PhysicalObject::Ptr object = std::make_shared<PhysicalObject>();
+        object->init(std::forward<Args>(args)...);
+        return object;
+    }
 };

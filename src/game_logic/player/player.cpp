@@ -7,7 +7,7 @@ Player::Player() = default;
 void Player::init() {
     Base::init(PhysicalObjectConfig(1.0, .1));
     initialize_player_sprite();
-    PhysicalContext::GetInstance()->movable_objects.insert(this->shared_from_this());
+    PhysicalContext::GetInstance()->physical_objects.insert(this->shared_from_this());
     GraphicsContext::GetInstance()->drawable_objects.insert(player_sprite_ptr_);
 };
 
