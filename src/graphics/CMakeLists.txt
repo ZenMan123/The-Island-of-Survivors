@@ -13,5 +13,4 @@ add_library(${TARGET_NAME}
 # Add link libraries
 target_link_libraries(${TARGET_NAME}
     drawable
-    physical_objects
 )

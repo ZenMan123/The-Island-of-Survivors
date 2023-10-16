@@ -2,8 +2,6 @@
 
 #include "graphics_context.hpp"
 
-#include <physics/physical_objects/physical_object.hpp>
-
 
 // 2D graphics engine
 class GraphicsEngine {

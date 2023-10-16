@@ -3,11 +3,13 @@
 #include "resource.hpp"
 
 #include <graphics/camera/camera.hpp>
+#include <physics/physical_objects/physical_object.hpp>
 
 
 // Common interface for all drawable objects
 class DrawableObject {
     Resource::Ptr drawable_resource_;
+    PhysicalObject::Ptr follow_object_;
 
 protected:
     Vec2 size;
@@ -33,6 +35,10 @@ public:
     
     // Common functions
     void draw(const Camera& camera) const;
+
+    void follow(PhysicalObject::Ptr object) noexcept;
+
+    void update(double time) noexcept;
 
     // Destructors
     virtual ~DrawableObject();

@@ -37,6 +37,16 @@ void DrawableObject::draw(const Camera& camera) const {
     );
 }
 
+void DrawableObject::follow(PhysicalObject::Ptr object) noexcept {
+    follow_object_ = object;
+}
+
+void DrawableObject::update(double time) noexcept {
+    if (follow_object_) {
+        position = follow_object_->position;
+    }
+}
+
 // Protected functions
 void DrawableObject::set_drawable_resource(Resource::Ptr resource) noexcept {
     drawable_resource_ = std::move(resource);
