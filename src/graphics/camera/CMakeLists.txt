@@ -1,4 +1,4 @@
-# Marge all cpp files in library
+# Merge all cpp files in library
 set(TARGET_NAME camera)
 
 add_library(${TARGET_NAME}

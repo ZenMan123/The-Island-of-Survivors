@@ -1,9 +1,11 @@
 #include "graphics_engine.hpp"
 
 
+//// GraphicsEngine
+
 // Constructors
 GraphicsEngine::GraphicsEngine() noexcept
-    : context_(GraphicsContext::GetInstance())
+    : context_(std::move(GraphicsContext::GetInstance()))
 {}
 
 void GraphicsEngine::init(const Camera& camera) noexcept {

@@ -7,12 +7,9 @@
 
 // Graphic engine context
 class GraphicsContext {
-    inline static GraphicsContext* graphics_context_ = nullptr;
-
-    // Constructors
-    GraphicsContext();
-
 public:
+    using Ptr = GraphicsContext*;
+
     AssociativeStorage<DrawableObject::Ptr> drawable_objects;
 
     // Singleton
@@ -22,5 +19,11 @@ public:
     void operator=(const GraphicsContext&) = delete;
     void operator=(GraphicsContext&&) = delete;
 
-    static GraphicsContext* GetInstance();
+    static GraphicsContext::Ptr GetInstance();
+
+private:
+    inline static GraphicsContext::Ptr graphics_context_ = nullptr;
+
+    // Constructors
+    GraphicsContext();
 };

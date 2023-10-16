@@ -3,6 +3,7 @@
 #include <graphics/drawable/resource.hpp>
 
 
+// Camera that convert from game space to screen space
 class Camera {
     RenderWindowPtr target_;
     
@@ -18,10 +19,10 @@ public:
     Camera(RenderWindowPtr target, double width, const Vec2& position);
 
     // Getters
-    RenderWindowPtr get_target() const noexcept;
+    [[nodiscard]] RenderWindowPtr get_target() const noexcept;
 
     // Common functions
-    Vec2 convert_point(const Vec2& point) const noexcept;
+    [[nodiscard]] Vec2 convert_point(const Vec2& point) const;
 
-    Vec2 convert_size(const Vec2& size) const noexcept;
+    [[nodiscard]] Vec2 convert_size(const Vec2& size) const;
 };

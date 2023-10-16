@@ -12,8 +12,8 @@ void Player::init() {
 };
 
 void Player::initialize_player_sprite() {
-    Resource::Ptr resource = std::make_shared<ColorResource>(sf::Color::Green);
-    player_sprite_ptr_ = std::make_shared<DrawableObject>(this->position, Vec2(1.0), resource);
+    Resource::Ptr resource = ColorResource::make(sf::Color::Green);
+    player_sprite_ptr_ = DrawableObject::make(this->position, Vec2(1.0), resource);
 }
 
 void Player::update(double time) {

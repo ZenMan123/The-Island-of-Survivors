@@ -1,25 +1,19 @@
 #include "drawable_object.hpp"
-#include "graphics/camera/camera.hpp"
 
+
+//// DrawableObject
 
 // Constructors
-DrawableObject::DrawableObject(const Vec2& position, const Vec2& size) noexcept
-    : position(position)
-    , size(size)
-{
-    CHECK(size.x >= 0 && size.y >= 0, "invalid resource size");
+DrawableObject::DrawableObject() noexcept {
 }
 
-DrawableObject::DrawableObject(const Vec2& position, const Vec2& size, Resource::Ptr resource) noexcept
-    : position(position)
-    , size(size)
-    , drawable_resource_(std::move(resource))
-{
-    CHECK(size.x >= 0 && size.y >= 0, "invalid resource size");
-}
+void DrawableObject::init(const Vec2& position, const Vec2& size, Resource::Ptr resource) noexcept {
+    CHECK(size.x >= 0 && size.y >= 0, "invalid drawable object size");
 
-// Destructors
-DrawableObject::~DrawableObject() = default;
+    this->drawable_resource_ = std::move(resource);
+    this->size = size;
+    this->position = position;
+}
 
 // Setters
 void DrawableObject::set_size(const Vec2& size) noexcept {
@@ -31,9 +25,11 @@ void DrawableObject::set_size(const Vec2& size) noexcept {
 Vec2 DrawableObject::get_size() const noexcept {
     return size;
 }
-    
+
 // Common functions
 void DrawableObject::draw(const Camera& camera) const {
+    ENSURE(drawable_resource_, RuntimeError, "drawable object are not initialized");
+
     drawable_resource_->draw(
         camera.get_target(),
         camera.convert_point(position),
@@ -44,4 +40,8 @@ void DrawableObject::draw(const Camera& camera) const {
 // Protected functions
 void DrawableObject::set_drawable_resource(Resource::Ptr resource) noexcept {
     drawable_resource_ = std::move(resource);
+}
+
+// Destructors
+DrawableObject::~DrawableObject() {
 }

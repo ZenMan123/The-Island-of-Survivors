@@ -21,12 +21,9 @@ public:
     Vec2 position;
 
     // Constructors
-    DrawableObject(const Vec2& position, const Vec2& size) noexcept;
+    DrawableObject() noexcept;
 
-    DrawableObject(const Vec2& position, const Vec2& size, Resource::Ptr resource) noexcept;
-
-    // Destructors
-    virtual ~DrawableObject();
+    void init(const Vec2& position, const Vec2& size, Resource::Ptr resource) noexcept;
 
     // Setters
     void set_size(const Vec2& size) noexcept;
@@ -36,4 +33,15 @@ public:
     
     // Common functions
     void draw(const Camera& camera) const;
+
+    // Destructors
+    virtual ~DrawableObject();
+
+    // Static functions
+    template <typename ...Args>
+    [[nodiscard]] static DrawableObject::Ptr make(Args&&... args) {
+        DrawableObject::Ptr object = std::make_shared<DrawableObject>();
+        object->init(std::forward<Args>(args)...);
+        return object;
+    }
 };

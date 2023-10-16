@@ -7,8 +7,8 @@
 
 // 2D graphics engine
 class GraphicsEngine {
-    GraphicsContext* context_ = nullptr;
-    PhysicalObject::Ptr follow_object_ = nullptr;
+    GraphicsContext::Ptr context_;
+    PhysicalObject::Ptr follow_object_;
 
 public:
     Camera camera;

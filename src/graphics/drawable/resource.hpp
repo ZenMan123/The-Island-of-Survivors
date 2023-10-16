@@ -14,7 +14,8 @@ public:
     // Common functions
     virtual void draw(RenderWindowPtr target, const Vec2& position, const Vec2& size) = 0;
 
-    virtual ~Resource() {}
+    // Destructors
+    virtual ~Resource();
 };
 
 
@@ -30,4 +31,10 @@ public:
 
     // Common functions
     void draw(RenderWindowPtr target, const Vec2& position, const Vec2& size) override final;
+
+    // Static functions
+    template <typename ...Args>
+    [[nodiscard]] static ColorResource::Ptr make(Args&&... args) {
+        return std::make_shared<ColorResource>(std::forward<Args>(args)...);
+    }
 };
