@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics.hpp>
 #include <string>
 #include <unordered_map>
 
@@ -23,6 +23,8 @@ public:
 
 private:
     inline static TexturesManager::Ptr textures_manager_ = nullptr;
+
+    std::unordered_map<std::string, sf::Texture> textures_cache_;
 
     // Constructors
     TexturesManager();

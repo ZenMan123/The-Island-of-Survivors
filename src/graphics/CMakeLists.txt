@@ -1,6 +1,7 @@
 # Add source directories
 add_subdirectory(camera)
 add_subdirectory(drawable)
+add_subdirectory(game_objects)
 
 # Merge all cpp files in library
 set(TARGET_NAME graphics)

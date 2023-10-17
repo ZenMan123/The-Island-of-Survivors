@@ -7,10 +7,17 @@
 DrawableObject::DrawableObject() noexcept {
 }
 
+void DrawableObject::init(const Vec2& size, Resource::Ptr resource) noexcept {
+    CHECK(size.x >= 0 && size.y >= 0, "invalid drawable object size");
+
+    drawable_resource_ = std::move(resource);
+    this->size = size;
+}
+
 void DrawableObject::init(const Vec2& position, const Vec2& size, Resource::Ptr resource) noexcept {
     CHECK(size.x >= 0 && size.y >= 0, "invalid drawable object size");
 
-    this->drawable_resource_ = std::move(resource);
+    drawable_resource_ = std::move(resource);
     this->size = size;
     this->position = position;
 }

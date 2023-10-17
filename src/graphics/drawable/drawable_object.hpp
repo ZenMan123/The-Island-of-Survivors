@@ -24,6 +24,8 @@ public:
     // Constructors
     DrawableObject() noexcept;
 
+    void init(const Vec2& size, Resource::Ptr resource) noexcept;
+
     void init(const Vec2& position, const Vec2& size, Resource::Ptr resource) noexcept;
 
     // Setters

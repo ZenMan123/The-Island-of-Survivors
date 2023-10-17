@@ -21,11 +21,5 @@ void GameMap::init() {
 void GameMap::update(double time) {
     for (const auto& object : objects_) {
         object->update(time);
-
-        if (object->get_follow_object()->border->get_state().intersected) {
-            object->set_drawable_resource(ColorResource::make(sf::Color::Blue));
-        } else {
-            object->set_drawable_resource(ColorResource::make(sf::Color::Red));
-        }
     }
 }

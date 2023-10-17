@@ -2,6 +2,7 @@
 set(TARGET_NAME textures)
 
 add_library(${TARGET_NAME}
+    game_object.cpp
     textures_manager.cpp
 )
 
