@@ -38,7 +38,15 @@ private:
 
     void start_move_right_();
 
+    void start_move_up_();
+
+    void start_move_down_();
+
     void stop_move_left_();
 
     void stop_move_right_();
+
+    void stop_move_up_();
+
+    void stop_move_down_();
 };

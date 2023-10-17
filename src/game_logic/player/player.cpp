@@ -60,6 +60,14 @@ void Player::process_event_pressed_(const sf::Event& event) {
             start_move_right_();
             break;
 
+        case app_config::game::GameActions::MOVE_UP:
+            start_move_up_();
+            break;
+
+        case app_config::game::GameActions::MOVE_DOWN:
+            start_move_down_();
+            break;
+
         case app_config::game::GameActions::JUMP:
             break;
 
@@ -85,6 +93,15 @@ void Player::process_event_released_(const sf::Event& event) {
         case app_config::game::GameActions::MOVE_RIGHT:
             stop_move_right_();
             break;
+
+        case app_config::game::GameActions::MOVE_UP:
+            stop_move_up_();
+            break;
+
+        case app_config::game::GameActions::MOVE_DOWN:
+            stop_move_down_();
+            break;
+
 
         case app_config::game::GameActions::JUMP:
             break;
@@ -114,6 +131,20 @@ void Player::start_move_right_() {
     }
 }
 
+void Player::start_move_up_() {
+    if (!condition_.is_moving_up()) {
+        Base::strength += Vec2(0.0, 5.0);
+        condition_.set_moving_up(true);
+    }
+}
+
+void Player::start_move_down_() {
+    if (!condition_.is_moving_down()) {
+        Base::strength += Vec2(0.0, -5.0);
+        condition_.set_moving_down(true);
+    }
+}
+
 void Player::stop_move_left_() {
     if (condition_.is_moving_left()) {
         Base::strength -= Vec2(-5.0, 0.0);
@@ -125,5 +156,19 @@ void Player::stop_move_right_() {
     if (condition_.is_moving_right()) {
         Base::strength -= Vec2(5.0, 0.0);
         condition_.set_moving_right(false);
+    }
+}
+
+void Player::stop_move_up_() {
+    if (condition_.is_moving_up()) {
+        Base::strength -= Vec2(0.0, 5.0);
+        condition_.set_moving_up(false);
+    }
+}
+
+void Player::stop_move_down_() {
+    if (condition_.is_moving_down()) {
+        Base::strength -= Vec2(0.0, -5.0);
+        condition_.set_moving_down(false);
     }
 }

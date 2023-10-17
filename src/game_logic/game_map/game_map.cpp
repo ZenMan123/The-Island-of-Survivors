@@ -2,9 +2,9 @@
 
 GameMap::GameMap() = default;
 
-std::vector<std::string> load_field() {
-    std::string filename = "resources/game_field/basic_field.txt";
-}
+//std::vector<std::string> load_field() {
+//    std::string filename = "resources/game_field/basic_field.txt";
+//}
 
 void GameMap::init() {
     auto ph_obj = PhysicalObject::make(PhysicalObjectConfig(
@@ -16,7 +16,7 @@ void GameMap::init() {
     auto dr_obj = DrawableObject::make(ph_obj->position, Vec2(1.0), ColorResource::make(sf::Color::Red));
     dr_obj->follow(ph_obj);
 
-    objects_.push_back(GameObject(dr_obj, ph_obj));
+    objects_.push_back(GameObject::make(dr_obj, ph_obj));
 }
 
 void GameMap::update(double time) {}
