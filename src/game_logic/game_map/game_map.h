@@ -1,10 +1,11 @@
 #pragma once
 
+#include <graphics/game_objects/game_object.hpp>
 #include <graphics/graphics_context.hpp>
 #include <physics/physical_context.hpp>
 
 class GameMap {
-    std::vector<DrawableObject::Ptr> objects_;
+    std::vector<Object::Ptr> objects_;
 
 public:
     GameMap();

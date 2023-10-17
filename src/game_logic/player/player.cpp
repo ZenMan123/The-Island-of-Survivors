@@ -5,6 +5,10 @@
 
 Player::Player() = default;
 
+Player::~Player() noexcept {
+
+}
+
 void Player::init() {
     Base::init(PhysicalObjectConfig(1.0, .1));
     border = BoxBorder::make(Vec2(0.0, -1.0), Vec2(1.0, 0.0));
@@ -16,12 +20,11 @@ void Player::init() {
 
 void Player::initialize_player_sprite() {
     Resource::Ptr resource = ColorResource::make(sf::Color::Green);
-    player_sprite_ptr_ = DrawableObject::make(this->position, Vec2(1.0), resource);
+    player_sprite_ptr_ = DrawableObject::make(Vec2(1.0), resource);
+    player_sprite_ptr_->follow(this->shared_from_this());
 }
 
-void Player::update(double time) {
-    player_sprite_ptr_->position = position;
-}
+void Player::update(double time){};
 
 void Player::process_event(const sf::Event& event) {
     switch (event.type) {
@@ -46,21 +49,7 @@ app_config::game::GameActions Player::get_game_action_(const sf::Event& event) {
     return app_config::game::KEY_BINDINGS[event.key.scancode];
 }
 
-bool up = false, down = false;
-
 void Player::process_event_pressed_(const sf::Event& event) {
-    if (event.key.scancode == sf::Keyboard::Scan::W) {
-        if (!up) {
-            up = true;
-            Base::strength += Vec2(0, 5.0);
-        }
-    } else if (event.key.scancode == sf::Keyboard::Scan::S) {
-        if (!down) {
-            down = true;
-            Base::strength += Vec2(0, -5.0);
-        }
-    }
-
     auto value = get_game_action_(event);
     switch (value) {
         case app_config::game::GameActions::MOVE_LEFT:
@@ -86,18 +75,6 @@ void Player::process_event_pressed_(const sf::Event& event) {
 }
 
 void Player::process_event_released_(const sf::Event& event) {
-    if (event.key.scancode == sf::Keyboard::Scan::W) {
-        if (up) {
-            up = false;
-            Base::strength -= Vec2(0, 5.0);
-        }
-    } else if (event.key.scancode == sf::Keyboard::Scan::S) {
-        if (down) {
-            down = false;
-            Base::strength -= Vec2(0, -5.0);
-        }
-    }
-
     auto value = get_game_action_(event);
 
     switch (value) {

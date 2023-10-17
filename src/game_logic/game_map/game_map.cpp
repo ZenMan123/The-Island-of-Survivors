@@ -2,6 +2,10 @@
 
 GameMap::GameMap() = default;
 
+std::vector<std::string> load_field() {
+    std::string filename = "resources/game_field/basic_field.txt";
+}
+
 void GameMap::init() {
     auto ph_obj = PhysicalObject::make(PhysicalObjectConfig(
         1.0, 1.0

@@ -14,6 +14,8 @@ public:
 
     Player();
 
+    virtual ~Player() noexcept;
+
     void init();
 
     void update(double time);
