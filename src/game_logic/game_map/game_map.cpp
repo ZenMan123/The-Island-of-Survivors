@@ -16,20 +16,7 @@ void GameMap::init() {
     auto dr_obj = DrawableObject::make(ph_obj->position, Vec2(1.0), ColorResource::make(sf::Color::Red));
     dr_obj->follow(ph_obj);
 
-    PhysicalContext::GetInstance()->physical_objects.insert(ph_obj);
-    GraphicsContext::GetInstance()->drawable_objects.insert(dr_obj);
-
-    objects_.push_back(dr_obj);
+    objects_.push_back(GameObject(dr_obj, ph_obj));
 }
 
-void GameMap::update(double time) {
-    for (const auto& object : objects_) {
-        object->update(time);
-
-        if (object->get_follow_object()->border->get_state().intersected) {
-            object->set_drawable_resource(ColorResource::make(sf::Color::Blue));
-        } else {
-            object->set_drawable_resource(ColorResource::make(sf::Color::Red));
-        }
-    }
-}
+void GameMap::update(double time) {}

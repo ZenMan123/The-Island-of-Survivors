@@ -5,7 +5,7 @@
 #include <physics/physical_context.hpp>
 
 class GameMap {
-    std::vector<Object::Ptr> objects_;
+    std::vector<GameObject::Ptr> objects_;
 
 public:
     GameMap();
