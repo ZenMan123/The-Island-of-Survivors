@@ -45,13 +45,13 @@ void DrawableObject::draw(const Camera& camera) const {
     );
 }
 
-void DrawableObject::follow(PhysicalObject::Ptr object) noexcept {
+void DrawableObject::follow(PhysicalObject::Ptr object, const Vec2& offset) noexcept {
     follow_object_ = object;
 }
 
 void DrawableObject::update(double time) noexcept {
     if (follow_object_) {
-        position = follow_object_->position;
+        position = follow_object_->position + follow_offset_;
     }
 }
 

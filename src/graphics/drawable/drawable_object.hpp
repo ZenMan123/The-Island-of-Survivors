@@ -9,7 +9,9 @@
 // Common interface for all drawable objects
 class DrawableObject {
     Resource::Ptr drawable_resource_;
+    
     PhysicalObject::Ptr follow_object_;
+    Vec2 follow_offset_;
 
 protected:
     Vec2 size;
@@ -37,7 +39,7 @@ public:
     // Common functions
     void draw(const Camera& camera) const;
 
-    void follow(PhysicalObject::Ptr object) noexcept;
+    void follow(PhysicalObject::Ptr object, const Vec2& offset = Vec2()) noexcept;
 
     void update(double time) noexcept;
 

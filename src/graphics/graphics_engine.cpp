@@ -32,6 +32,10 @@ void GraphicsEngine::update(double time) noexcept {
     if (follow_object_) {
         camera.position = follow_object_->position;
     }
+
+    for (const auto& [id, object] : context_->drawable_objects) {
+        object->update(time);
+    }
 }
 
 // Static functions
