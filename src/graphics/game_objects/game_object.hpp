@@ -22,4 +22,10 @@ public:
 
     // Destructors
     ~GameObject();
+
+    // Static functions
+    template <typename ...Args>
+    [[nodiscard]] static GameObject::Ptr make(Args&&... args) {
+        return std::make_shared<GameObject>(std::forward<Args>(args)...);
+    }
 };
