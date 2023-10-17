@@ -34,6 +34,7 @@ public:
 
     Vec2 speed;
     Vec2 position;
+    Vec2 strength;
     ObjectBorder::Ptr border;
 
     // Constructors
@@ -50,6 +51,8 @@ public:
     void apply_intersection(const Intersection& intersection, const PhysicalObject::Ptr& other) noexcept;
 
     void update_basic(double time) noexcept;
+
+    void drop_state() noexcept;
 
     // Destructors
     virtual ~PhysicalObject();

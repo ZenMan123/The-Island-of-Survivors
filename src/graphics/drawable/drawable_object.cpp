@@ -21,9 +21,17 @@ void DrawableObject::set_size(const Vec2& size) noexcept {
     this->size = size;
 }
 
+void DrawableObject::set_drawable_resource(Resource::Ptr resource) noexcept {
+    drawable_resource_ = std::move(resource);
+}
+
 // Getters
 Vec2 DrawableObject::get_size() const noexcept {
     return size;
+}
+
+PhysicalObject::Ptr DrawableObject::get_follow_object() const noexcept {
+    return follow_object_;
 }
 
 // Common functions
@@ -45,11 +53,6 @@ void DrawableObject::update(double time) noexcept {
     if (follow_object_) {
         position = follow_object_->position;
     }
-}
-
-// Protected functions
-void DrawableObject::set_drawable_resource(Resource::Ptr resource) noexcept {
-    drawable_resource_ = std::move(resource);
 }
 
 // Destructors

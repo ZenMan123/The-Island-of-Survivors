@@ -19,6 +19,13 @@ struct Edge {
         bool penetrate[2];
         Vec2 intersections[2];
     };
+
+    Edge& apply_dircetion(const Vec2& dircetion);
+};
+
+
+struct BorderState {
+    bool intersected = false;
 };
 
 
@@ -29,6 +36,9 @@ class ObjectBorder {
 
     bool has_border_ = false;
 
+protected:
+    BorderState state_;
+
 public:
     using Ptr = std::shared_ptr<ObjectBorder>;
 
@@ -37,8 +47,13 @@ public:
 
     void init(const Vec2& left_bottom, const Vec2& right_top) noexcept;
 
+    // Getters
+    const BorderState& get_state() const noexcept;
+
     // Common methods
-    void intersect(ObjectBorder::Ptr other, std::vector<Intersection>& intersections) const;
+    void intersect(ObjectBorder::Ptr other, const Vec2& dircetion, std::vector<Intersection>& intersections);
+
+    void drop_state() noexcept;
 
     // Interface
 
@@ -49,14 +64,14 @@ public:
     [[nodiscard]] virtual size_t size() const noexcept = 0;
 
     // Common methods
-    [[nodiscard]] virtual Edge::Intersection intersect_edge(const Edge& edge) const noexcept = 0;
+    [[nodiscard]] virtual Edge::Intersection intersect_edge(const Edge& edge) noexcept = 0;
 
     // Destructors
     virtual ~ObjectBorder();
 
 private:
     // Private methods
-    [[nodiscard]] bool is_intersect(ObjectBorder::Ptr other) const noexcept;
+    [[nodiscard]] bool is_intersect(ObjectBorder::Ptr other, const Vec2& dircetion) const noexcept;
 };
 
 
@@ -80,7 +95,7 @@ public:
     [[nodiscard]] size_t size() const noexcept final;
 
     // Common methods
-    [[nodiscard]] Edge::Intersection intersect_edge(const Edge& edge) const noexcept final;
+    [[nodiscard]] Edge::Intersection intersect_edge(const Edge& edge) noexcept final;
 
     // Static functions
     template <typename ...Args>

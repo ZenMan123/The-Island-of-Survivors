@@ -1,6 +1,15 @@
 #include "object_border.hpp"
 
 
+//// Edge
+
+Edge& Edge::apply_dircetion(const Vec2& dircetion) {
+    start -= dircetion;
+    end -= dircetion;
+    return *this;
+}
+
+
 //// ObjectBorder
 
 // Constructors
@@ -13,9 +22,14 @@ void ObjectBorder::init(const Vec2& left_bottom, const Vec2& right_top) noexcept
     has_border_ = true;
 }
 
+// Getters
+const BorderState& ObjectBorder::get_state() const noexcept {
+    return state_;
+}
+
 // Common methods
-void ObjectBorder::intersect(ObjectBorder::Ptr other, std::vector<Intersection>& intersections) const {
-    if (!is_intersect(other)) {
+void ObjectBorder::intersect(ObjectBorder::Ptr other, const Vec2& dircetion, std::vector<Intersection>& intersections) {
+    if (!is_intersect(other, dircetion)) {
         return;
     }
 
@@ -23,7 +37,7 @@ void ObjectBorder::intersect(ObjectBorder::Ptr other, std::vector<Intersection>&
     Vec2 first_point;
     Vec2 last_point;
     for (size_t i = 0; i < size() && number_intersections < 2; ++i) {
-        Edge::Intersection intersection = other->intersect_edge(get_edge(i));
+        Edge::Intersection intersection = other->intersect_edge(get_edge(i).apply_dircetion(dircetion));
         number_intersections += intersection.number_intersections;
 
         for (size_t id = 0; id < intersection.number_intersections; ++id) {
@@ -35,14 +49,26 @@ void ObjectBorder::intersect(ObjectBorder::Ptr other, std::vector<Intersection>&
         }
     }
 
-    intersections.push_back({.penetration = (last_point - first_point).length(), .direction = (last_point - first_point).rotate90()});
+    if (number_intersections > 0) {
+        state_.intersected = true;
+        intersections.push_back({.penetration = (last_point - first_point).length(), .direction = (last_point - first_point).rotate90()});
+    }
+}
+
+void ObjectBorder::drop_state() noexcept {
+    state_.intersected = false;
 }
 
 // Private methods
-bool ObjectBorder::is_intersect(ObjectBorder::Ptr other) const noexcept {
+bool ObjectBorder::is_intersect(ObjectBorder::Ptr other, const Vec2& dircetion) const noexcept {
+    Vec2 left_bottom = left_bottom_ - dircetion;
+    Vec2 right_top = right_top_ - dircetion;
+
+    ObjectBorder::Ptr ср = other;
+
     return !has_border_ || !other->has_border_
-        || std::max(left_bottom_.x, other->left_bottom_.x) + EPS <= std::min(right_top_.x, other->right_top_.x) - EPS
-        || std::max(left_bottom_.y, other->left_bottom_.y) + EPS <= std::min(right_top_.y, other->right_top_.y) - EPS;
+        || std::max(left_bottom.x, other->left_bottom_.x) + EPS <= std::min(right_top.x, other->right_top_.x) - EPS
+        || std::max(left_bottom.y, other->left_bottom_.y) + EPS <= std::min(right_top.y, other->right_top_.y) - EPS;
 }
 
 // Destructors
@@ -75,7 +101,7 @@ size_t BoxBorder::size() const noexcept {
 }
 
 // Common methods
-Edge::Intersection BoxBorder::intersect_edge(const Edge& edge) const noexcept {
+Edge::Intersection BoxBorder::intersect_edge(const Edge& edge) noexcept {
     Edge::Intersection result;
     if (equality(edge.start.x, edge.end.x)) {
         double edge_x = edge.start.x;
@@ -94,6 +120,7 @@ Edge::Intersection BoxBorder::intersect_edge(const Edge& edge) const noexcept {
             return result;
         }
         
+        state_.intersected = true;
         if (bottom_y > bottom.start.y - EPS) {
             result.number_intersections = 1;
             result.intersections[0] = Vec2(edge_x, top.start.y);
@@ -126,6 +153,7 @@ Edge::Intersection BoxBorder::intersect_edge(const Edge& edge) const noexcept {
             return result;
         }
 
+        state_.intersected = true;
         if (left_x > left.start.x - EPS) {
             result.number_intersections = 1;
             result.intersections[0] = Vec2(right.start.x, edge_y);

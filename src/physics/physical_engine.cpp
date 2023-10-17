@@ -15,7 +15,10 @@ void PhysicalEngine::init() noexcept {
 void PhysicalEngine::update(double time) {
     for (const auto& [id, object] : context_->physical_objects) {
         object->update_basic(time);
+        object->drop_state();
+    }
 
+    for (const auto& [id, object] : context_->physical_objects) {
         if (!object->is_movable()) {
             continue;
         }
@@ -32,6 +35,7 @@ void PhysicalEngine::update(double time) {
             intersectoins_buffer_.clear();
         }
     }
+    apply_intersections();
 }
 
 // Private functions

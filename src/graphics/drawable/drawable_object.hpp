@@ -14,9 +14,6 @@ class DrawableObject {
 protected:
     Vec2 size;
 
-    // Protected functions
-    void set_drawable_resource(Resource::Ptr resource) noexcept;
-
 public:
     using Ptr = std::shared_ptr<DrawableObject>;
 
@@ -30,9 +27,13 @@ public:
     // Setters
     void set_size(const Vec2& size) noexcept;
 
+    void set_drawable_resource(Resource::Ptr resource) noexcept;
+
     // Getters
     [[nodiscard]] Vec2 get_size() const noexcept;
-    
+
+    [[nodiscard]] PhysicalObject::Ptr get_follow_object() const noexcept;
+
     // Common functions
     void draw(const Camera& camera) const;
 

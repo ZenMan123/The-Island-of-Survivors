@@ -16,6 +16,9 @@ public:
 
     void init(const Camera& camera) noexcept;
 
+    // Getters
+    [[nodiscard]] PhysicalObject::Ptr get_follow_object() const noexcept;
+
     // Common functions
     void draw() const;
 

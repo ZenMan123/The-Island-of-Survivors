@@ -12,6 +12,11 @@ void GraphicsEngine::init(const Camera& camera) noexcept {
     this->camera = camera;
 }
 
+// Getters
+PhysicalObject::Ptr GraphicsEngine::get_follow_object() const noexcept {
+    return follow_object_;
+}
+
 // Common functions
 void GraphicsEngine::draw() const {
     for (const auto& [id, object] : context_->drawable_objects) {

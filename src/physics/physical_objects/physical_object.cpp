@@ -51,7 +51,11 @@ bool PhysicalObject::is_movable() const noexcept {
 
 // Common methods
 void PhysicalObject::intersect(const PhysicalObject::Ptr& other, std::vector<Intersection>& intersections) const {
-    border->intersect(other->border, intersections);
+    if (!border || !other->border) {
+        return;
+    }
+    
+    border->intersect(other->border, other->position - position, intersections);
 }
 
 void PhysicalObject::apply_intersection(const Intersection& intersection, const PhysicalObject::Ptr& other) noexcept {
@@ -69,12 +73,20 @@ void PhysicalObject::apply_intersection(const Intersection& intersection, const 
 
     Vec2 impulse = (-(1.0 + ratio) * projected_velocity / (this_weight + other_weight)) * normal;
 
+
     speed -= impulse * this_weight;
     other->speed += impulse * other_weight;
 }
 
 void PhysicalObject::update_basic(double time) noexcept {
-    position += speed * time;
+    position += speed * time + strength * time * time / 2.0;
+    speed += strength * time;
+}
+
+void PhysicalObject::drop_state() noexcept {
+    if (border) {
+        border->drop_state();
+    }
 }
 
 // Destructors
