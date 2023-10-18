@@ -12,6 +12,7 @@ Player::~Player() noexcept {
 void Player::init() {
     Base::init(PhysicalObjectConfig(1.0, .1));
     border = BoxBorder::make(Vec2(0.0, -1.0), Vec2(1.0, 0.0));
+    Base::position = Vec2(1, 3);
 
     initialize_player_sprite();
     PhysicalContext::GetInstance()->physical_objects.insert(this->shared_from_this());

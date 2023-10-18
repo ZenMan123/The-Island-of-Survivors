@@ -1,0 +1,3 @@
+ERROR in file: /Users/artemsafin/CLionProjects/The-Island-of-Survivors/src/physics/physical_objects/physical_object.cpp, function: PhysicalObjectConfig, line: 22
+Weight must be greater than zero
+

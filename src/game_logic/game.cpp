@@ -13,6 +13,8 @@ void Game::init(RenderWindowPtr window) {
 
     graphics_engine_.init(Camera(window_, 10, {0, 0}));
     physics_engine_.init();
+
+    graphics_engine_.follow(main_player_ptr_);
 }
 
 void Game::draw() const {

@@ -11,6 +11,7 @@ GameObject::GameObject(DrawableObject::Ptr drawable_object, PhysicalObject::Ptr 
     : drawable_object_(drawable_object)
     , physical_object_(physical_object)
 {
+    drawable_object_->follow(physical_object_);
     insert_into_context();
 }
 
