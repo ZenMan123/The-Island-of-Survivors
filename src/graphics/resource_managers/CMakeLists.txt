@@ -1,8 +1,7 @@
 # Merge all cpp files in library
-set(TARGET_NAME textures)
+set(TARGET_NAME resource_managers)
 
 add_library(${TARGET_NAME}
-    game_object.cpp
     textures_manager.cpp
 )
 

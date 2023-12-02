@@ -12,11 +12,6 @@ void GraphicsEngine::init(const Camera& camera) noexcept {
     this->camera = camera;
 }
 
-// Getters
-PhysicalObject::Ptr GraphicsEngine::get_follow_object() const noexcept {
-    return follow_object_;
-}
-
 // Common functions
 void GraphicsEngine::draw() const {
     for (const auto& [id, object] : context_->drawable_objects) {
@@ -24,15 +19,8 @@ void GraphicsEngine::draw() const {
     }
 }
 
-void GraphicsEngine::follow(PhysicalObject::Ptr object) noexcept {
-    follow_object_ = object;
-}
-
 void GraphicsEngine::update(double time) noexcept {
-    if (follow_object_) {
-        camera.position = follow_object_->position;
-    }
-
+    camera.update();
     for (const auto& [id, object] : context_->drawable_objects) {
         object->update(time);
     }

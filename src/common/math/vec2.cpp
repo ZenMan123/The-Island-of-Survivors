@@ -116,6 +116,11 @@ Vec2 Vec2::operator/(double other) const noexcept {
     return Vec2(x / other, y / other);
 }
 
+// Other operations
+Vec2 Vec2::multiply(const Vec2& other) const noexcept {
+    return Vec2(x * other.x, y * other.y);
+}
+
 // Math functions
 double Vec2::length() const {
     return std::sqrt(x * x + y * y);

@@ -2,6 +2,8 @@
 
 #include "object_border.hpp"
 
+#include <common/objects/follow_object.hpp>
+
 
 struct PhysicalObjectConfig {
 private:
@@ -26,7 +28,7 @@ public:
 
 
 // Common interface for physical objects 
-class PhysicalObject {
+class PhysicalObject : public AllowFollow {
     PhysicalObjectConfig object_config_;
 
 public:
@@ -41,6 +43,9 @@ public:
     PhysicalObject();
 
     void init(const PhysicalObjectConfig& object_config);
+
+    // Getters
+    virtual Vec2 get_position() const noexcept override;
 
     // Statistics
     [[nodiscard]] bool is_movable() const noexcept;

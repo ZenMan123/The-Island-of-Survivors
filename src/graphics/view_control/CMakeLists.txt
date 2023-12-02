@@ -1,5 +1,5 @@
 # Merge all cpp files in library
-set(TARGET_NAME camera)
+set(TARGET_NAME view_control)
 
 add_library(${TARGET_NAME}
     camera.cpp
@@ -7,5 +7,5 @@ add_library(${TARGET_NAME}
 
 # Add link libraries
 target_link_libraries(${TARGET_NAME}
-    math
+    objects
 )

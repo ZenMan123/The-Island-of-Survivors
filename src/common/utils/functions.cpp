@@ -50,3 +50,13 @@ bool equality(double left, double right) noexcept {
 bool less_equality(double left, double right) noexcept {
     return left < right || equality(left, right);
 }
+
+// Math functions
+
+double radians_to_degrees(double radianss) noexcept {
+    return radianss * 180.0 / PI;
+}
+
+double degrees_to_radians(double degrees) noexcept {
+    return degrees * PI / 180.0;
+}

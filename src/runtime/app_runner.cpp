@@ -1,6 +1,6 @@
-#include <configuration/app_config.hpp>
 #include "app_runner.hpp"
-#include <SFML/Graphics.hpp>
+
+#include <configuration/app_config.hpp>
 
 AppRunner::AppRunner() = default;
 

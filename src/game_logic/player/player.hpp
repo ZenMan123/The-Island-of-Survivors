@@ -3,7 +3,7 @@
 #include "player_condition.h"
 
 #include <configuration/app_config.hpp>
-#include <graphics/drawable/drawable_object.hpp>
+#include <graphics/drawable_objects/drawable_object.hpp>
 #include <physics/physical_objects/physical_object.hpp>
 
 class Player : public PhysicalObject, public std::enable_shared_from_this<Player> {

@@ -49,48 +49,48 @@ public:
     }
 
     // Getters
-    size_t get_memory_id(size_t id) const {
+    [[nodiscard]] size_t get_memory_id(size_t id) const {
         ENSURE(contains(id), OutOfRange, "invalid value id");
 
         return values_index_[id];
     }
 
-    size_t get_id(size_t memory_id) const {
+    [[nodiscard]] size_t get_id(size_t memory_id) const {
         ENSURE(memory_id < values_.size(), OutOfRange, "invalid memory id");
 
         return values_[memory_id].first;
     }
 
     // Common functions
-    bool contains(size_t id) const noexcept {
+    [[nodiscard]] bool contains(size_t id) const noexcept {
         return id < values_index_.size() && values_index_[id] < std::numeric_limits<size_t>::max();
     }
 
-    bool contains_memory(size_t memory_id) const noexcept {
+    [[nodiscard]] bool contains_memory(size_t memory_id) const noexcept {
         return memory_id < values_.size();
     }
 
-    size_t size() const noexcept {
+    [[nodiscard]] size_t size() const noexcept {
         return values_.size();
     }
 
-    bool empty() const noexcept {
+    [[nodiscard]] bool empty() const noexcept {
         return values_.empty();
     }
 
-    Iterator begin() noexcept {
+    [[nodiscard]] Iterator begin() noexcept {
         return values_.begin();
     }
 
-    Iterator end() noexcept {
+    [[nodiscard]] Iterator end() noexcept {
         return values_.end();
     }
 
-    ConstIterator begin() const noexcept {
+    [[nodiscard]] ConstIterator begin() const noexcept {
         return values_.begin();
     }
 
-    ConstIterator end() const noexcept {
+    [[nodiscard]] ConstIterator end() const noexcept {
         return values_.end();
     }
 

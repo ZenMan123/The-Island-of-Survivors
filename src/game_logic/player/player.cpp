@@ -1,3 +1,5 @@
+#include "graphics/drawable_objects/resources/rectangle_resource.hpp"
+#include "graphics/drawable_objects/resources/circle_resource.hpp"
 #include "graphics/graphics_context.hpp"
 #include "player.hpp"
 #include "physics/physical_context.hpp"
@@ -20,7 +22,7 @@ void Player::init() {
 };
 
 void Player::initialize_player_sprite() {
-    Resource::Ptr resource = ColorResource::make(sf::Color::Green);
+    Resource::Ptr resource = CircleResource::make(sf::Color::Green);
     player_sprite_ptr_ = DrawableObject::make(Vec2(1.0), resource);
     player_sprite_ptr_->follow(this->shared_from_this());
 }

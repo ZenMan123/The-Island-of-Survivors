@@ -1,14 +1,13 @@
 # Merge all cpp files in library
-set(TARGET_NAME drawable)
+set(TARGET_NAME resources)
 
 add_library(${TARGET_NAME}
-    drawable_object.cpp
-    resource.cpp
-    sprite.cpp
+    circle_resource.cpp
+    rectangle_resource.cpp
+    resource_interface.cpp
 )
 
 # Add link libraries
 target_link_libraries(${TARGET_NAME}
-    camera
-    physical_objects
+    math
 )

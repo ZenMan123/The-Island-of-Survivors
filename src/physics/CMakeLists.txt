@@ -1,4 +1,5 @@
 # Add source directories
+add_subdirectory(game_objects)
 add_subdirectory(physical_objects)
 
 # Merge all cpp files in library

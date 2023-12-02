@@ -1,12 +1,11 @@
 # Merge all cpp files in library
-set(TARGET_NAME math)
+set(TARGET_NAME objects)
 
 add_library(${TARGET_NAME}
-    vec2.cpp
+    follow_object.cpp
 )
 
 # Add link libraries
 target_link_libraries(${TARGET_NAME}
-    utils
-    sfml-graphics
+    math
 )

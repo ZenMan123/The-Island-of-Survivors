@@ -57,10 +57,10 @@ public:
     void operator=(const LogManager&) = delete;
     void operator=(LogManager&&) = delete;
 
-    static LogManager* GetInstance();
+    [[nodiscard]] static LogManager* GetInstance();
 
     // Common functions
-    std::ofstream& log_stream() noexcept;
+    [[nodiscard]] std::ofstream& log_stream() noexcept;
 };
 
 
@@ -109,14 +109,20 @@ public:
 
 // Common functions
 
-// GRE equality checking up to the EPS value
-bool equality(double left, double right) noexcept;
+// Equality checking up to the EPS value
+[[nodiscard]] bool equality(double left, double right) noexcept;
 
-// GRE less or equality checking up to the EPS value
-bool less_equality(double left, double right) noexcept;
+// Less or equality checking up to the EPS value
+[[nodiscard]] bool less_equality(double left, double right) noexcept;
 
-// GRE composing hash and hasher(value)
+// Composing hash and hasher(value)
 template <typename T, class Hasher = std::hash<T>>
 void hash_combine(size_t& hash, const T& value, const Hasher& hasher = Hasher()) {
     hash ^= hasher(value) + 0x9e3779b9 + (hash << 6) + (hash >> 2);
 }
+
+// Math functions
+
+double radians_to_degrees(double radianss) noexcept;
+
+double degrees_to_radians(double degrees) noexcept;

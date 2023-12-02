@@ -1,6 +1,7 @@
 #pragma once
 
-#include <graphics/drawable/drawable_object.hpp>
+#include <graphics/drawable_objects/drawable_object.hpp>
+#include <physics/physical_objects/physical_object.hpp>
 
 
 // Game object with drawable and physical parts

@@ -44,6 +44,11 @@ void PhysicalObject::init(const PhysicalObjectConfig& object_config) {
     object_config_ = object_config;
 }
 
+// Getters
+Vec2 PhysicalObject::get_position() const noexcept {
+    return position;
+}
+
 // Statistics
 bool PhysicalObject::is_movable() const noexcept {
     return object_config_.is_movable();

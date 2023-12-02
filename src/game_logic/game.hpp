@@ -1,12 +1,10 @@
 #pragma once
 
-#include "game_map/game_map.h"
+#include "game_map/game_map.hpp"
 #include "player/player.hpp"
 
-#include <configuration/app_config.hpp>
 #include <graphics/graphics_engine.hpp>
 #include <physics/physical_engine.hpp>
-#include <SFML/Graphics.hpp>
 
 class Game {
 public:

@@ -1,17 +1,13 @@
 #pragma once
 
-#include "resource.hpp"
+#include "resources/resource_interface.hpp"
 
-#include <graphics/camera/camera.hpp>
-#include <physics/physical_objects/physical_object.hpp>
+#include <graphics/view_control/camera.hpp>
 
 
 // Common interface for all drawable objects
-class DrawableObject {
+class DrawableObject : public CanFollow {
     Resource::Ptr drawable_resource_;
-    
-    PhysicalObject::Ptr follow_object_;
-    Vec2 follow_offset_;
 
 protected:
     Vec2 size;
@@ -29,6 +25,8 @@ public:
     void init(const Vec2& position, const Vec2& size, Resource::Ptr resource) noexcept;
 
     // Setters
+    virtual void set_position(const Vec2& position) noexcept override;
+
     void set_size(const Vec2& size) noexcept;
 
     void set_drawable_resource(Resource::Ptr resource) noexcept;
@@ -36,12 +34,8 @@ public:
     // Getters
     [[nodiscard]] Vec2 get_size() const noexcept;
 
-    [[nodiscard]] PhysicalObject::Ptr get_follow_object() const noexcept;
-
     // Common functions
     void draw(const Camera& camera) const;
-
-    void follow(PhysicalObject::Ptr object, const Vec2& offset = Vec2()) noexcept;
 
     void update(double time) noexcept;
 

@@ -23,6 +23,10 @@ void DrawableObject::init(const Vec2& position, const Vec2& size, Resource::Ptr 
 }
 
 // Setters
+void DrawableObject::set_position(const Vec2& position) noexcept {
+    this->position = position;
+}
+
 void DrawableObject::set_size(const Vec2& size) noexcept {
     CHECK(size.x >= 0 && size.y >= 0, "invalid resource size");
     this->size = size;
@@ -37,10 +41,6 @@ Vec2 DrawableObject::get_size() const noexcept {
     return size;
 }
 
-PhysicalObject::Ptr DrawableObject::get_follow_object() const noexcept {
-    return follow_object_;
-}
-
 // Common functions
 void DrawableObject::draw(const Camera& camera) const {
     ENSURE(drawable_resource_, RuntimeError, "drawable object are not initialized");
@@ -52,14 +52,8 @@ void DrawableObject::draw(const Camera& camera) const {
     );
 }
 
-void DrawableObject::follow(PhysicalObject::Ptr object, const Vec2& offset) noexcept {
-    follow_object_ = object;
-}
-
 void DrawableObject::update(double time) noexcept {
-    if (follow_object_) {
-        position = follow_object_->position + follow_offset_;
-    }
+    follow_update();
 }
 
 // Destructors

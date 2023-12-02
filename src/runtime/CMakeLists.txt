@@ -2,11 +2,10 @@
 set(TARGET_NAME runtime)
 
 add_library(${TARGET_NAME}
-        app_runner.cpp
+    app_runner.cpp
 )
 
 # Add link libraries
 target_link_libraries(${TARGET_NAME}
-        game_logic
-        graphics
+    game_logic
 )

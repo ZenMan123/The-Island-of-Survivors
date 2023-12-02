@@ -67,12 +67,15 @@ public:
 
     Vec2 operator/(double other) const noexcept;
 
+    // Other operations
+    [[nodiscard]] Vec2 multiply(const Vec2& other) const noexcept;
+
     // Math functions
-    double length() const;
+    [[nodiscard]] double length() const;
 
-    Vec2 normalize() const noexcept;
+    [[nodiscard]] Vec2 normalize() const noexcept;
 
-    Vec2 rotate90() const noexcept;
+    [[nodiscard]] Vec2 rotate90() const noexcept;
 };
 
 // External operators
@@ -81,4 +84,4 @@ std::ostream& operator<<(std::ostream& fout, const Vec2& vector);
 Vec2 operator*(double value, const Vec2& vector) noexcept;
 
 // External functions
-sf::FloatRect to_rect(const Vec2& position, const Vec2& size);
+[[nodiscard]] sf::FloatRect to_rect(const Vec2& position, const Vec2& size);
